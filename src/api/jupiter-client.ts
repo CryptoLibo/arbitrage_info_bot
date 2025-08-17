@@ -41,6 +41,9 @@ export class JupiterClient {
       await this.loadTokens(); // Ensure tokens are loaded
     }
     const token = this.tokens.find(t => t.address === mintAddress);
+    if (!token) {
+        console.log(`    Token ${mintAddress} no encontrado en la lista de tokens de Jupiter.`);
+    }
     return token ? token.decimals : undefined;
   }
 
@@ -61,19 +64,21 @@ export class JupiterClient {
         asLegacyTransaction: 'false'
       });
 
-      console.log(`  Solicitando cotización de Jupiter: ${inputMint} -> ${outputMint} con ${amount} unidades.`);
+      console.log(`  Solicitando cotización de Jupiter: ${inputMint} -> ${outputMint} con ${amount} unidades. URL: ${this.baseUrl}/quote?${params.toString()}`);
       const response = await axios.get(`${this.baseUrl}/quote?${params.toString()}`, {
         headers: {
           'Accept': 'application/json'
         },
         timeout: 10000 // 10 second timeout for quote requests
       });
+      console.log(`  Respuesta de Jupiter para ${inputMint} -> ${outputMint}:`, JSON.stringify(response.data, null, 2));
 
       return response.data as JupiterQuote;
     } catch (error: any) {
       if (error.response?.data?.error !== 'No routes found') {
         console.error('Error getting Jupiter quote:', error.response ? error.response.data : error.message);
       }
+      console.log(`  No se encontró cotización para ${inputMint} -> ${outputMint}. Error: ${error.response?.data?.error || error.message}`);
       return null;
     }
   }
@@ -82,13 +87,17 @@ export class JupiterClient {
     return 'So11111111111111111111111111111111111111112';
   }
 
+  getUSDCMint(): string {
+    return 'EPjFWdd5AufqSSqeM2qN1xzybapTVG4itwqZNfFVdvfM'; // USDC mint address
+  }
+
   async isSwappableToken(tokenMint: string): Promise<boolean> {
     const SOL_MINT = this.getSOLMint();
-    const WSOL_MINT = 'So11111111111111111111111111111111111111112'; // WSOL is the same as SOL_MINT
+    const USDC_MINT = this.getUSDCMint();
 
-    // Don't swap if it's already SOL/WSOL
-    if (tokenMint === SOL_MINT || tokenMint === WSOL_MINT) {
-      console.log(`  Token ${tokenMint} es SOL/WSOL, no se considera swappable para arbitraje.`);
+    // Don't swap if it's already SOL/WSOL or USDC
+    if (tokenMint === SOL_MINT || tokenMint === USDC_MINT) {
+      console.log(`  Token ${tokenMint} es SOL/WSOL o USDC, no se considera swappable para arbitraje.`);
       return false;
     }
 
@@ -102,20 +111,29 @@ export class JupiterClient {
         return false;
       }
 
-      // Use a more realistic amount for checking swappability, e.g., 0.01 units of the token
-      const amountToCheck = 0.01 * (10 ** tokenDecimals); 
+      // Use a fixed amount for checking swappability, e.g., 1 unit of the token
+      const amountToCheck = 1 * (10 ** tokenDecimals); 
       
-      const quote = await this.getQuote(tokenMint, SOL_MINT, amountToCheck); 
-      
+      // Try swapping to SOL
+      console.log(`    Intentando obtener cotización de ${tokenMint} a SOL con ${amountToCheck} unidades.`);
+      let quote = await this.getQuote(tokenMint, SOL_MINT, amountToCheck); 
       if (quote) {
-        console.log(`    Token ${tokenMint} es swappable en Jupiter. Quote: ${JSON.stringify(quote)}`);
+        console.log(`    Token ${tokenMint} es swappable a SOL en Jupiter. Quote: ${JSON.stringify(quote)}`);
         return true;
-      } else {
-        console.log(`    Token ${tokenMint} NO es swappable en Jupiter. No se encontró cotización.`);
-        return false;
       }
+
+      // If not swappable to SOL, try swapping to USDC
+      console.log(`    Intentando obtener cotización de ${tokenMint} a USDC con ${amountToCheck} unidades.`);
+      quote = await this.getQuote(tokenMint, USDC_MINT, amountToCheck); 
+      if (quote) {
+        console.log(`    Token ${tokenMint} es swappable a USDC en Jupiter. Quote: ${JSON.stringify(quote)}`);
+        return true;
+      }
+
+      console.log(`    Token ${tokenMint} NO es swappable en Jupiter. No se encontró cotización a SOL ni a USDC.`);
+      return false;
     } catch (error) {
-      console.error(`Error verificando si el token ${tokenMint.slice(0, 0)}... es swappable:`, error);
+      console.error(`Error verificando si el token ${tokenMint.slice(0, 8)}... es swappable:`, error);
       return false;
     }
   }

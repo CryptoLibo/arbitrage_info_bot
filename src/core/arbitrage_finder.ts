@@ -71,8 +71,8 @@ export class ArbitrageFinder {
             // const tokenBLiquidity = await this.solanaTrackerAPI.getTokenLiquidity(poolInfo.tokenBMint.toBase58());
 
             // if (tokenALiquidity === undefined || tokenBLiquidity === undefined || 
-            //     tokenALiquidity < this.MIN_GENERAL_TOKEN_LIQUIDITY_USD || 
-            //     tokenBLiquidity < this.MIN_GENERAL_TOKEN_LIQUIDITY_USD) {
+            //     tokenALiquidity < this.MIN_GENERAL_TOKEN_LIQUIDEZ_USD || 
+            //     tokenBLiquidity < this.MIN_GENERAL_TOKEN_LIQUIDEZ_USD) {
             //     console.log(`  Pool ${meteoraPool.pool_address} descartada por baja liquidez general de token. Token A Liquidez: $${tokenALiquidity?.toFixed(2) || 'N/A'} USD, Token B Liquidez: $${tokenBLiquidity?.toFixed(2) || 'N/A'} USD.`);
             //     continue;
             // }
@@ -142,7 +142,7 @@ export class ArbitrageFinder {
             // Start with a realistic amount, e.g., 1 unit of tokenIn
             const amountIn = new BN(1 * (10 ** tokenInDecimals)); 
 
-            // Step 1: Swap tokenIn for tokenOut on Meteora using Meteora SDK\\\'s getQuote
+            // Step 1: Swap tokenIn for tokenOut on Meteora using Meteora SDK's getQuote
             const meteoraQuote = await this.meteoraClient.getQuote(
                 poolInfo,
                 tokenInMint,
