@@ -1,8 +1,11 @@
+import time
 from src.api.jupiter import JupiterAPI
 from src.api.meteora import MeteoraAPI
 from src.core.simulation import Simulation
+from src.blockchain.solana_rpc import SolanaRPC
 from config.settings import MIN_PROFIT_PERCENTAGE, TRADE_CAPITAL_SOL, BASE_TOKENS
 from src.utils.logger import setup_logger
+from src.utils.helpers import to_raw_amount, to_human_readable # Import new helper functions
 
 logger = setup_logger(__name__)
 
@@ -11,7 +14,26 @@ class ArbitrageFinder:
         self.jupiter_api = JupiterAPI()
         self.meteora_api = MeteoraAPI()
         self.simulation = Simulation()
+        self.solana_rpc = SolanaRPC() # Initialize SolanaRPC to get token metadata
         self.opportunities = []
+        self.token_decimals_cache = {} # Cache for token decimals
+
+    async def _get_token_decimals(self, mint_address):
+        if mint_address not in self.token_decimals_cache:
+            # Try to get from pre-defined BASE_TOKENS first
+            if mint_address == BASE_TOKENS["SOL"]:
+                self.token_decimals_cache[mint_address] = 9
+            elif mint_address == BASE_TOKENS["USDC"]:
+                self.token_decimals_cache[mint_address] = 6
+            else:
+                # Fetch from RPC if not a base token
+                token_meta = self.solana_rpc.get_token_metadata(mint_address)
+                if token_meta and token_meta.get("decimals") is not None:
+                    self.token_decimals_cache[mint_address] = token_meta["decimals"]
+                else:
+                    logger.warning(f"No se pudieron obtener los decimales para el token: {mint_address}. Usando 6 por defecto.")
+                    self.token_decimals_cache[mint_address] = 6 # Default to 6 decimals if not found
+        return self.token_decimals_cache[mint_address]
 
     async def find_opportunities(self):
         logger.info("Buscando oportunidades de arbitraje...")
@@ -56,14 +78,9 @@ class ArbitrageFinder:
 
             logger.info(f"Analizando par {meme_token_symbol}/{base_token_symbol} en pool Meteora {pool_address}")
 
-            # Convertir TRADE_CAPITAL_SOL a la unidad más pequeña (lamports) si es SOL
-            # Asumimos 9 decimales para SOL, 6 para USDC. Esto debe ser dinámico con metadatos de token.
-            if base_token_symbol == "SOL":
-                trade_capital_lamports = int(TRADE_CAPITAL_SOL * (10**9)) # SOL tiene 9 decimales
-            elif base_token_symbol == "USDC":
-                trade_capital_lamports = int(TRADE_CAPITAL_SOL * (10**6)) # USDC tiene 6 decimales (ejemplo, debe ser dinámico)
-            else:
-                continue # No es un token base soportado
+            # Obtener decimales del token base dinámicamente
+            base_token_decimals = await self._get_token_decimals(base_mint)
+            trade_capital_lamports = to_raw_amount(TRADE_CAPITAL_SOL, base_token_decimals)
 
             # --- Simulación: Comprar en Jupiter, Vender en Meteora ---
             try:
@@ -93,9 +110,9 @@ class ArbitrageFinder:
                             "profit_percentage": round(profit_percentage, 4),
                             "buy_platform": "Jupiter",
                             "sell_platform": "Meteora",
-                            "jupiter_link": f"https://jup.ag/swap/{base_token_symbol}-{meme_token_symbol}?amount={TRADE_CAPITAL_SOL}", # Placeholder
-                            "meteora_link": f"https://app.meteora.ag/pools/{pool_address}", # Placeholder
-                            "timestamp": "TODO: add real timestamp"
+                            "jupiter_link": f"https://jup.ag/swap/{base_token_symbol}-{meme_token_symbol}?amount={to_human_readable(trade_capital_lamports, base_token_decimals)}",
+                            "meteora_link": f"https://app.meteora.ag/pools/{pool_address}",
+                            "timestamp": int(time.time())
                         })
                         logger.info(f"Oportunidad detectada (J->M): {meme_token_symbol}/{base_token_symbol} - {profit_percentage:.4f}% de ganancia.")
 
@@ -130,9 +147,9 @@ class ArbitrageFinder:
                             "profit_percentage": round(profit_percentage, 4),
                             "buy_platform": "Meteora",
                             "sell_platform": "Jupiter",
-                            "jupiter_link": f"https://jup.ag/swap/{meme_token_symbol}-{base_token_symbol}?amount={meme_amount_from_meteora}", # Placeholder
-                            "meteora_link": f"https://app.meteora.ag/pools/{pool_address}", # Placeholder
-                            "timestamp": "TODO: add real timestamp"
+                            "jupiter_link": f"https://jup.ag/swap/{meme_token_symbol}-{base_token_symbol}?amount={to_human_readable(meme_amount_from_meteora, await self._get_token_decimals(meme_mint))}",
+                            "meteora_link": f"https://app.meteora.ag/pools/{pool_address}",
+                            "timestamp": int(time.time())
                         })
                         logger.info(f"Oportunidad detectada (M->J): {meme_token_symbol}/{base_token_symbol} - {profit_percentage:.4f}% de ganancia.")
 
