@@ -5,6 +5,7 @@ export interface MeteoraPool {
     token_a_mint: string;
     token_b_mint: string;
     created_at_slot_timestamp: number; // Unix timestamp
+    tvl: number; // Total Value Locked en USD (liquidez de la pool)
     // Add other fields as needed
 }
 
@@ -19,7 +20,7 @@ export class MeteoraAPI {
                 order: 'desc'
             });
             const response = await axios.get(`${this.baseUrl}/pools?${params.toString()}`);
-            console.log("Raw Meteora API response data:", response.data);
+            // console.log("Raw Meteora API response data:", JSON.stringify(response.data, null, 2)); // Descomentar para depuración
             const pools = (response.data as any).data;
             return Array.isArray(pools) ? pools as MeteoraPool[] : [];
         } catch (error) {

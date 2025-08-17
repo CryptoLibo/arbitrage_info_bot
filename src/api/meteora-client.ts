@@ -1,7 +1,8 @@
 import { Connection, PublicKey } from '@solana/web3.js';
-import { CpAmm, getUnClaimReward } from '@meteora-ag/cp-amm-sdk';
+import { CpAmm, getUnClaimReward, GetQuoteParams } from '@meteora-ag/cp-amm-sdk';
 import { TOKEN_PROGRAM_ID, TOKEN_2022_PROGRAM_ID } from '@solana/spl-token';
 import BN from 'bn.js';
+import { JupiterClient } from './jupiter-client'; // Import JupiterClient
 
 export interface PoolInfo {
     publicKey: PublicKey;
@@ -13,10 +14,12 @@ export interface PoolInfo {
 export class MeteoraClient {
     private connection: Connection;
     private cpAmm: CpAmm;
+    private jupiterClient: JupiterClient; // Add JupiterClient
 
     constructor(connection: Connection) {
         this.connection = connection;
         this.cpAmm = new CpAmm(connection);
+        this.jupiterClient = new JupiterClient(connection); // Initialize JupiterClient
     }
 
     async getPoolInfo(poolAddress: PublicKey): Promise<PoolInfo | null> {
@@ -73,7 +76,7 @@ export class MeteoraClient {
                     currentFeeNumerator = Math.max(0, cliffFeeNumerator - (effectivePeriods * reductionFactor));
                 } else if (feeSchedulerMode === 1) { // Exponential
                     const reductionRate = reductionFactor / 10000;
-                    currentFeeNumerator = cliffFeeNumerator * Math.pow(1 - reductionRate, effectivePeriods);
+                    currentFeeNumerator = currentFeeNumerator * Math.pow(1 - reductionRate, effectivePeriods);
                 } else {
                     console.log(`   ⚠️ Unknown fee scheduler mode: ${feeSchedulerMode}, using cliff fee rate`);
                     currentFeeNumerator = cliffFeeNumerator;
@@ -92,5 +95,36 @@ export class MeteoraClient {
             return 25; 
         }
     }
+
+    async getQuote(poolState: any, tokenInMint: PublicKey, amountIn: BN): Promise<{ swapInAmount: BN; consumedInAmount: BN; swapOutAmount: BN; minSwapOutAmount: BN; totalFee: BN; priceImpact: any; } | null> {
+        try {
+            const currentTime = Math.floor(Date.now() / 1000);
+            const currentSlot = await this.connection.getSlot();
+
+            const tokenADecimal = await this.jupiterClient.getTokenDecimals(poolState.tokenAMint.toBase58());
+            const tokenBDecimal = await this.jupiterClient.getTokenDecimals(poolState.tokenBMint.toBase58());
+
+            if (tokenADecimal === undefined || tokenBDecimal === undefined) {
+                console.error('Could not get token decimals for Meteora quote.');
+                return null;
+            }
+
+            const quote = await this.cpAmm.getQuote({
+                inAmount: amountIn,
+                inputTokenMint: tokenInMint,
+                slippage: 10, // 0.1% slippage
+                poolState: poolState.account,
+                currentTime: currentTime,
+                currentSlot: currentSlot,
+                tokenADecimal: tokenADecimal,
+                tokenBDecimal: tokenBDecimal
+            } as GetQuoteParams);
+            return quote;
+        } catch (error) {
+            console.error('Error getting Meteora quote:', error);
+            return null;
+        }
+    }
 }
+
 
