@@ -55,7 +55,7 @@ class ArbitrageFinder:
 
         one_day_ago_timestamp = int(time.time()) - (24 * 60 * 60)
 
-        meteora_pools = self.meteora_api.get_damm_v2_pools(created_after_timestamp=one_day_ago_timestamp)
+        meteora_pools = self.meteora_api.get_damm_v2_pools(created_within_hours=24)
         if not meteora_pools:
             logger.warning("No se pudieron obtener o no hay pools de Meteora DAMM v2 recientes.")
             return
