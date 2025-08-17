@@ -30,7 +30,7 @@ class ArbitrageInfoBot:
         # Run Flask app in a separate thread
         # app.run(debug=True, host=\'0.0.0.0\', port=5000, use_reloader=False) is for development
         # For production, use a WSGI server like Gunicorn or Waitress
-        dashboard_app.run(host=\'0.0.0.0\', port=5000, debug=False, use_reloader=False)
+        dashboard_app.run(host='0.0.0.0', port=5000, debug=False, use_reloader=False)
 
     async def run_arbitrage_finder(self):
         while True:
