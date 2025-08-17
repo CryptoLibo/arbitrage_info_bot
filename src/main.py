@@ -1,6 +1,12 @@
 import asyncio
 import time
 import threading
+import sys
+import os
+
+# Add the project root to sys.path to allow imports from src
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir)))
+
 from src.core.arbitrage_finder import ArbitrageFinder
 from src.blockchain.solana_rpc import SolanaRPC
 from src.utils.logger import setup_logger
@@ -24,7 +30,7 @@ class ArbitrageInfoBot:
         # Run Flask app in a separate thread
         # app.run(debug=True, host=\'0.0.0.0\', port=5000, use_reloader=False) is for development
         # For production, use a WSGI server like Gunicorn or Waitress
-        dashboard_app.run(host='0.0.0.0', port=5000, debug=False, use_reloader=False)
+        dashboard_app.run(host=\'0.0.0.0\', port=5000, debug=False, use_reloader=False)
 
     async def run_arbitrage_finder(self):
         while True:
@@ -61,5 +67,7 @@ if __name__ == "__main__":
         logger.info("Bot detenido por el usuario.")
     except Exception as e:
         logger.error(f"Error inesperado en el bot: {e}")
+
+
 
 
