@@ -1,89 +1,75 @@
 import requests
 import json
 import time
+from datetime import datetime, timedelta
 from src.utils.logger import setup_logger
 
 logger = setup_logger(__name__)
 
 class MeteoraAPI:
-    BASE_URL = "https://rocketscan.fun/api"
+    BASE_URL = "https://dammv2-api.meteora.ag"
 
-    def get_damm_v2_pools(self, created_after_timestamp=None):
+    def get_damm_v2_pools(self, created_within_hours=24):
         """
-        Obtiene una lista de todas las pools DAMM v2 de Rocketscan, opcionalmente filtradas por fecha de creación.
+        Obtiene una lista de todas las pools DAMM v2 de Meteora, filtrando por pools creadas en las últimas X horas.
 
         Args:
-            created_after_timestamp (int, optional): Timestamp Unix. Solo se devolverán las pools creadas después de este tiempo.
+            created_within_hours (int): Número de horas hacia atrás para filtrar las pools.
 
         Returns:
             list: Lista de objetos de pools DAMM v2 si es exitoso, None en caso contrario.
         """
-        url = f"{self.BASE_URL}/dammv2-pools"
-        params = {
-            "page": 1,
-            "limit": 100, # Increased limit to fetch more pools per request
-            "sortBy": "createdAt",
-            "sortOrder": "desc",
-            "_": int(time.time() * 1000) # Cache buster
-        }
+        url = f"{self.BASE_URL}/pools"
         all_pools = []
         page = 1
+        limit = 100 # Max limit per request
+
+        # Calculate the timestamp for 24 hours ago
+        time_ago = datetime.utcnow() - timedelta(hours=created_within_hours)
+        min_timestamp = int(time_ago.timestamp())
+
         while True:
-            params["page"] = page
+            params = {
+                "page": page,
+                "limit": limit,
+                "order_by": "created_at_slot_timestamp",
+                "order": "desc",
+            }
             try:
                 response = requests.get(url, params=params)
                 response.raise_for_status() # Lanza una excepción para errores HTTP
                 data = response.json()
-                pools = data.get("pools", []) # Rocketscan returns pools under 'pools' key
+                pools = data.get("data", [])
 
                 if not pools:
                     break # No hay más pools
 
-                # Filter pools by creation timestamp if provided
-                # Rocketscan returns 'createdAt' in ISO format, convert to timestamp for comparison
-                if created_after_timestamp:
-                    filtered_current_page_pools = []
-                    for p in pools:
-                        created_at_iso = p.get("createdAt")
-                        if created_at_iso:
-                            # Convert ISO 8601 string to datetime object, then to Unix timestamp
-                            # Example: '2025-08-17T15:00:00.000Z'
-                            try:
-                                # Python 3.11+ can parse 'Z' directly as UTC
-                                # For older Python, might need .replace('Z', '+00:00')
-                                dt_object = datetime.fromisoformat(created_at_iso.replace('Z', '+00:00'))
-                                pool_created_timestamp = int(dt_object.timestamp())
-                                if pool_created_timestamp >= created_after_timestamp:
-                                    filtered_current_page_pools.append(p)
-                            except ValueError:
-                                logger.warning(f"Formato de fecha inválido para pool {p.get('address')}: {created_at_iso}")
-                                continue
-                        else:
-                            logger.warning(f"Pool {p.get('address')} no tiene campo 'createdAt'.")
-
-                else:
-                    filtered_current_page_pools = pools
-
-                all_pools.extend(filtered_current_page_pools)
+                filtered_current_page_pools = []
+                for p in pools:
+                    created_at_slot_timestamp = p.get("created_at_slot_timestamp")
+                    if created_at_slot_timestamp and created_at_slot_timestamp >= min_timestamp:
+                        filtered_current_page_pools.append(p)
+                    else:
+                        # Since pools are ordered by timestamp desc, if we find one older than min_timestamp,
+                        # we can stop fetching more pages.
+                        break
                 
-                # If the number of pools returned is less than the page size, it's the last page
-                if len(pools) < params["limit"]:
-                    break
+                all_pools.extend(filtered_current_page_pools)
+
+                if len(pools) < limit or (len(filtered_current_page_pools) < len(pools) and created_within_hours is not None):
+                    break # No more pages or we've found all recent pools
                 else:
-                    page += 1 # Go to the next page
+                    page += 1
 
             except requests.exceptions.RequestException as e:
-                logger.error(f"Error al obtener pools de Rocketscan DAMM v2: {e}")
+                logger.error(f"Error al obtener pools de Meteora DAMM v2: {e}")
                 return None
         
         return all_pools
 
     def get_damm_v2_pool_details(self, pool_address):
         """
-        Obtiene los detalles de una pool DAMM v2 específica de Rocketscan.
-        Nota: Rocketscan no parece tener un endpoint directo para detalles de pool por dirección.
-        Podríamos necesitar buscar en la lista completa o confiar en los datos de la lista inicial.
-        Por ahora, mantendremos el endpoint original de Meteora si es necesario para otros detalles.
+        Obtiene los detalles de una pool DAMM v2 específica de Meteora.
 
         Args:
             pool_address (str): Dirección de la pool DAMM v2.
@@ -91,18 +77,13 @@ class MeteoraAPI:
         Returns:
             dict: Objeto de detalles de la pool si es exitoso, None en caso contrario.
         """
-        # Este endpoint probablemente no funcionará con Rocketscan BASE_URL
-        # Si necesitamos detalles específicos, tendremos que reevaluar cómo obtenerlos.
-        url = f"https://damm-api.meteora.ag/pair/{pool_address}" # Revertir a la API original de Meteora para detalles
+        url = f"{self.BASE_URL}/pools/{pool_address}"
         try:
             response = requests.get(url)
             response.raise_for_status() # Lanza una excepción para errores HTTP
             return response.json()
         except requests.exceptions.RequestException as e:
-            logger.error(f"Error al obtener detalles de la pool {pool_address} de Meteora DAMM v2 (usando API original): {e}")
+            logger.error(f"Error al obtener detalles de la pool {pool_address} de Meteora DAMM v2: {e}")
             return None
-
-from datetime import datetime # Import datetime for ISO format parsing
-
 
 
