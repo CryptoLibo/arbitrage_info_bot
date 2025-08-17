@@ -1,6 +1,6 @@
 from solana.rpc.api import Client
-from solana.rpc.websocket_api import SolanaWsClient, connect
-from solana.publickey import PublicKey
+from solana.rpc.websocket_api import connect
+from solders.pubkey import Pubkey as PublicKey
 from solana.rpc.types import TokenAccountOpts
 from config.rpc_endpoints import QUICKNODE_RPC_HTTP, QUICKNODE_RPC_WS
 from src.utils.logger import setup_logger
@@ -47,9 +47,9 @@ class SolanaRPC:
             account_info = self.http_client.get_account_info(PublicKey(mint_address))
             if account_info.value:
                 # This is a very basic attempt to infer decimals. Not reliable for all tokens.
-                # For accurate decimals, you'd typically need to parse the Tokenkeg program data
+                # For accurate decimals, you\'d typically need to parse the Tokenkeg program data
                 # or rely on a token list/registry.
-                # For now, we'll assume common decimals for SOL/USDC and default for others.
+                # For now, we\'ll assume common decimals for SOL/USDC and default for others.
                 if mint_address == "So11111111111111111111111111111111111111112": # SOL
                     decimals = 9
                     symbol = "SOL"
@@ -112,6 +112,8 @@ class SolanaRPC:
                 logger.error(f"Error al cerrar conexión WebSocket: {e}")
             finally:
                 self.ws_client = None
+
+
 
 
 

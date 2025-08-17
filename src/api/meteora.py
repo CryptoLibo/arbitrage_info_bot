@@ -16,7 +16,7 @@ class MeteoraAPI:
         Returns:
             list: Lista de objetos de pools DAMM v2 si es exitoso, None en caso contrario.
         """
-        url = f"{self.BASE_URL}/pools"
+        url = f"{self.BASE_URL}/pair/all"
         try:
             response = requests.get(url)
             response.raise_for_status() # Lanza una excepción para errores HTTP
@@ -35,7 +35,7 @@ class MeteoraAPI:
         Returns:
             dict: Objeto de detalles de la pool si es exitoso, None en caso contrario.
         """
-        url = f"{self.BASE_URL}/pools/{pool_address}"
+        url = f"{self.BASE_URL}/pair/{pool_address}"
         try:
             response = requests.get(url)
             response.raise_for_status() # Lanza una excepción para errores HTTP

@@ -21,6 +21,8 @@ class JupiterAPI:
             dict: Objeto de cotización de Jupiter si es exitoso, None en caso contrario.
         """
         url = f"{self.BASE_URL}/quote?inputMint={input_mint}&outputMint={output_mint}&amount={amount}&slippageBps={slippage_bps}"
+        import time
+        time.sleep(1) # Increased delay to avoid rate limiting
         try:
             response = requests.get(url)
             response.raise_for_status()  # Lanza una excepción para errores HTTP
@@ -54,6 +56,8 @@ class JupiterAPI:
         except requests.exceptions.RequestException as e:
             logger.error(f"Error al obtener transacción de swap de Jupiter: {e}")
             return None
+
+
 
 
 
