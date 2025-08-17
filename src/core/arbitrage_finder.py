@@ -39,10 +39,13 @@ class ArbitrageFinder:
         logger.info("Buscando oportunidades de arbitraje...")
         self.opportunities = [] # Limpiar oportunidades anteriores
 
-        # 1. Obtener todas las pools DAMM v2 de Meteora
-        meteora_pools = self.meteora_api.get_damm_v2_pools()
+        # Calculate timestamp for 24 hours ago
+        one_day_ago_timestamp = int(time.time()) - (24 * 60 * 60)
+
+        # 1. Obtener todas las pools DAMM v2 de Meteora creadas en las últimas 24 horas
+        meteora_pools = self.meteora_api.get_damm_v2_pools(created_after_timestamp=one_day_ago_timestamp)
         if not meteora_pools:
-            logger.warning("No se pudieron obtener las pools de Meteora DAMM v2.")
+            logger.warning("No se pudieron obtener o no hay pools de Meteora DAMM v2 recientes.")
             return
 
         for pool in meteora_pools:
@@ -161,5 +164,6 @@ class ArbitrageFinder:
 
     def get_current_opportunities(self):
         return self.opportunities
+
 
 
