@@ -1,5 +1,6 @@
 import { Connection, PublicKey } from '@solana/web3.js';
 import axios from 'axios';
+import { AccountLayout, MintLayout, TOKEN_PROGRAM_ID } from '@solana/spl-token';
 
 export interface JupiterQuote {
   inputMint: string;
@@ -17,17 +18,16 @@ export interface JupiterQuote {
 export class JupiterClient {
   private connection: Connection;
   private baseUrl: string;
-  private tokens: any[] = [];
+  private tokens: any[] = []; // Keep for now, might be useful for other info
 
   constructor(connection: Connection) {
     this.connection = connection;
     this.baseUrl = 'https://quote-api.jup.ag/v6';
-    this.loadTokens();
+    this.loadTokens(); // Still load Jupiter's token list for other potential uses
   }
 
   private async loadTokens() {
     try {
-      // Updated endpoint for Jupiter tokens
       const response = await axios.get('https://tokens.jup.ag/tokens');
       this.tokens = response.data as any[];
       console.log(`Cargados ${this.tokens.length} tokens de Jupiter.`);
@@ -37,14 +37,37 @@ export class JupiterClient {
   }
 
   async getTokenDecimals(mintAddress: string): Promise<number | undefined> {
-    if (this.tokens.length === 0) {
-      await this.loadTokens(); // Ensure tokens are loaded
+    const MAX_RETRIES = 3;
+    const RETRY_DELAY_MS = 500; // 0.5 seconds
+
+    for (let i = 0; i < MAX_RETRIES; i++) {
+      try {
+        const mintPublicKey = new PublicKey(mintAddress);
+        const mintAccountInfo = await this.connection.getAccountInfo(mintPublicKey);
+
+        if (!mintAccountInfo) {
+          console.log(`    Intento ${i + 1}/${MAX_RETRIES}: No se encontró información de la cuenta de mint para ${mintAddress} en la blockchain.`);
+          if (i < MAX_RETRIES - 1) {
+            await new Promise(resolve => setTimeout(resolve, RETRY_DELAY_MS));
+            continue;
+          }
+          return undefined;
+        }
+
+        // Parse the mint account data to get decimals
+        const mint = MintLayout.decode(mintAccountInfo.data);
+        return mint.decimals;
+      } catch (error: any) {
+        console.error(`    Intento ${i + 1}/${MAX_RETRIES}: Error obteniendo decimales para ${mintAddress} de la blockchain:`, error.message);
+        if (i < MAX_RETRIES - 1) {
+          await new Promise(resolve => setTimeout(resolve, RETRY_DELAY_MS));
+        } else {
+          console.error(`    Fallo al obtener decimales para ${mintAddress} después de ${MAX_RETRIES} reintentos.`);
+          return undefined;
+        }
+      }
     }
-    const token = this.tokens.find(t => t.address === mintAddress);
-    if (!token) {
-        console.log(`    Token ${mintAddress} no encontrado en la lista de tokens de Jupiter.`);
-    }
-    return token ? token.decimals : undefined;
+    return undefined; // Should not reach here
   }
 
   async getQuote(
@@ -111,8 +134,8 @@ export class JupiterClient {
         return false;
       }
 
-      // Use a fixed amount for checking swappability, e.g., 1 unit of the token
-      const amountToCheck = 1 * (10 ** tokenDecimals); 
+      // Use a fixed amount for checking swappability, e.g., 100 units of the token
+      const amountToCheck = 100 * (10 ** tokenDecimals); 
       
       // Try swapping to SOL
       console.log(`    Intentando obtener cotización de ${tokenMint} a SOL con ${amountToCheck} unidades.`);

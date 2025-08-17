@@ -1,0 +1,1819 @@
+
+> arbitrage_info_bot_ts@1.0.0 start
+> node dist/main.js
+
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+Bot de arbitraje informativo iniciado...
+Buscando pools DAMM v2 creadas en las últimas 24 horas y con liquidez > $100 USD...
+(node:22255) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Meteora API devolvió 100 pools.
+  Pool JE3QAWxPRexxHV53StfdMxzaHVcoankgqdrHWupA1KKX descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool D9gJTDZ6hs8zBPG3oPf69oNGZCYMFht5W6tjYqjmessX descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool DDZeF7nrtrJV5CAvmy9itB6tjJiPuUBF7Ga6Ff6RD6f5 descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool 8q3ERg7awtoWuS8YEpbA9NYkiEy9YuWENdGW4F8XFF5y descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool 7C2RmScwhBYxLx2NvGJ2PpoRN1N5dYH7ofwakM7QD7Nj descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool 8oyFyUqJ2LjwQLLeqPWnwQ6XyyeUG2RpM34oRGhKyJ47 descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool 8DsSffj11wDvtmNt8ePkX8wmBE465Hm67Y3qfjpkptsM descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool BCpMeimPgfNf8KbXmQTFQT3wLf1Tzwn6A887W9xUf6gi descartada por baja liquidez en Meteora ($20.21 USD).
+  Pool CsbratabRdHHNjCs1bqZYf6L9N48mdU5yDyiGk5JhcjN descartada por baja liquidez en Meteora ($0.00 USD).
+Analizando pool de Meteora: 9ztowBmMe1asHwF1AFZ1g8uMA4CMDKTAyD74hUKRwEU5 (createdAt: 2025-08-17T19:52:05.000Z, Liquidez: $218.11 USD)
+Intentando obtener pool info para: 9ztowBmMe1asHwF1AFZ1g8uMA4CMDKTAyD74hUKRwEU5
+  PoolState encontrado para 9ztowBmMe1asHwF1AFZ1g8uMA4CMDKTAyD74hUKRwEU5: {
+  poolFees: {
+    baseFee: {
+      cliffFeeNumerator: <BN: 1dcd6500>,
+      feeSchedulerMode: 0,
+      padding0: [Array],
+      numberOfPeriod: 144,
+      periodFrequency: <BN: 258>,
+      reductionFactor: <BN: 2e9fc4>,
+      padding1: <BN: 0>
+    },
+    protocolFeePercent: 20,
+    partnerFeePercent: 0,
+    referralFeePercent: 20,
+    padding0: [ 0, 0, 0, 0, 0 ],
+    dynamicFee: {
+      initialized: 1,
+      padding: [Array],
+      maxVolatilityAccumulator: 14460000,
+      variableFeeControl: 5739,
+      binStep: 1,
+      filterPeriod: 10,
+      decayPeriod: 120,
+      reductionFactor: 5000,
+      lastUpdateTimestamp: <BN: 68a23645>,
+      binStepU128: <BN: 68db8bac710cb>,
+      sqrtPriceReference: <BN: 6f0dc88b830100c>,
+      volatilityAccumulator: <BN: b6a5d0>,
+      volatilityReference: <BN: 474230>
+    },
+    padding1: [ <BN: 0>, <BN: 0> ]
+  },
+  tokenAMint: PublicKey [PublicKey(F8FN5FdjjrNYkbejV58bKKAUwao8hDLAwmGj8yHFpump)] {
+    _bn: <BN: d1deec5db587385a0442ad6e0dac2489349f9c9dbf08fc98a72a378be6191b2f>
+  },
+  tokenBMint: PublicKey [PublicKey(So11111111111111111111111111111111111111112)] {
+    _bn: <BN: 69b8857feab8184fb687f634618c035dac439dc1aeb3b5598a0f00000000001>
+  },
+  tokenAVault: PublicKey [PublicKey(5a8uFwaxxQTKKis3RiUV6UbQ52qWdg5MXVtwcH94xWqN)] {
+    _bn: <BN: 43ebd91c3063438e082a0833093384530598e75daabf04bbfc53eb2840801251>
+  },
+  tokenBVault: PublicKey [PublicKey(ALtkB29Rg4hyq3HWGQVsLrHLfkTRHxSHofAsvroz1qjH)] {
+    _bn: <BN: 8ad1b9a96dad234c09865874dc7e2dcd67c0dc9e21c1f5fafdb007a3f1c5ee64>
+  },
+  whitelistedVault: PublicKey [PublicKey(11111111111111111111111111111111)] {
+    _bn: <BN: 0>
+  },
+  partner: PublicKey [PublicKey(11111111111111111111111111111111)] {
+    _bn: <BN: 0>
+  },
+  liquidity: <BN: c850e8596c7b0c8ee47e0d90c>,
+  padding: <BN: 0>,
+  protocolAFee: <BN: 0>,
+  protocolBFee: <BN: e0c0f8e>,
+  partnerAFee: <BN: 0>,
+  partnerBFee: <BN: 0>,
+  sqrtMinPrice: <BN: 100013b50>,
+  sqrtMaxPrice: <BN: fffec4b1845c1aa94e69579b>,
+  sqrtPrice: <BN: 731b79cb3c92cf8>,
+  activationPoint: <BN: 68a232e5>,
+  activationType: 1,
+  poolStatus: 0,
+  tokenAFlag: 0,
+  tokenBFlag: 0,
+  collectFeeMode: 1,
+  poolType: 0,
+  padding0: [ 0, 0 ],
+  feeAPerLiquidity: [
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0
+  ],
+  feeBPerLiquidity: [
+    65, 72, 75, 6, 101, 66, 194, 8, 0,
+     0,  0,  0, 0,   0,  0,   0, 0, 0,
+     0,  0,  0, 0,   0,  0,   0, 0, 0,
+     0,  0,  0, 0,   0
+  ],
+  permanentLockLiquidity: <BN: 0>,
+  metrics: {
+    totalLpAFee: <BN: 0>,
+    totalLpBFee: <BN: 393ce7d4>,
+    totalProtocolAFee: <BN: 0>,
+    totalProtocolBFee: <BN: e0c0f8e>,
+    totalPartnerAFee: <BN: 0>,
+    totalPartnerBFee: <BN: 0>,
+    totalPosition: <BN: 11>,
+    padding: <BN: 0>
+  },
+  creator: PublicKey [PublicKey(BvgEXZdg2TKPL7SL8adBmuFkrkPVuUbuUNVpQ29xJh2v)] {
+    _bn: <BN: a25503670f6ef46e2899c8112b8de4fa77f5d73dd2bc89a688e3e8ff3ee8d0e7>
+  },
+  padding1: [ <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0> ],
+  rewardInfos: [
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    },
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    }
+  ]
+}
+  Información de la pool obtenida: Token A: F8FN5FdjjrNYkbejV58bKKAUwao8hDLAwmGj8yHFpump, Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 49.69%
+  Verificando si el token F8FN5FdjjrNYkbejV58bKKAUwao8hDLAwmGj8yHFpump es swappable en Jupiter.
+Cargados 243762 tokens de Jupiter.
+Cargados 243762 tokens de Jupiter.
+Cargados 243762 tokens de Jupiter.
+    Token F8FN5FdjjrNYkbejV58bKKAUwao8hDLAwmGj8yHFpump no encontrado en la lista de tokens de Jupiter.
+    No se pudieron obtener los decimales para el token F8FN5FdjjrNYkbejV58bKKAUwao8hDLAwmGj8yHFpump.
+  Token A (F8FN5FdjjrNYkbejV58bKKAUwao8hDLAwmGj8yHFpump) swappable en Jupiter: false
+  Token So11111111111111111111111111111111111111112 es SOL/WSOL o USDC, no se considera swappable para arbitraje.
+  Token B (So11111111111111111111111111111111111111112) swappable en Jupiter: false
+  Pool 7Uw5ZQf3AAzydgEsib8iKB8Z8EZwtTfh5hcLZTW59Wj4 descartada por baja liquidez en Meteora ($9.45 USD).
+  Pool 43CGxWFjxDaJVvjZsJ1goYVYPLfurKrTdMa9rkdVNXmC descartada por baja liquidez en Meteora ($13.44 USD).
+Analizando pool de Meteora: HJxsAwiMago7aHTEwurgTu5WnZVZLfvXj4qakU5J3zPo (createdAt: 2025-08-17T19:47:35.000Z, Liquidez: $399.53 USD)
+Intentando obtener pool info para: HJxsAwiMago7aHTEwurgTu5WnZVZLfvXj4qakU5J3zPo
+  PoolState encontrado para HJxsAwiMago7aHTEwurgTu5WnZVZLfvXj4qakU5J3zPo: {
+  poolFees: {
+    baseFee: {
+      cliffFeeNumerator: <BN: 1dcd6500>,
+      feeSchedulerMode: 0,
+      padding0: [Array],
+      numberOfPeriod: 144,
+      periodFrequency: <BN: 258>,
+      reductionFactor: <BN: 2e9fc4>,
+      padding1: <BN: 0>
+    },
+    protocolFeePercent: 20,
+    partnerFeePercent: 0,
+    referralFeePercent: 20,
+    padding0: [ 0, 0, 0, 0, 0 ],
+    dynamicFee: {
+      initialized: 1,
+      padding: [Array],
+      maxVolatilityAccumulator: 14460000,
+      variableFeeControl: 5739,
+      binStep: 1,
+      filterPeriod: 10,
+      decayPeriod: 120,
+      reductionFactor: 5000,
+      lastUpdateTimestamp: <BN: 68a236b7>,
+      binStepU128: <BN: 68db8bac710cb>,
+      sqrtPriceReference: <BN: 244e41d1690afb6>,
+      volatilityAccumulator: <BN: 2ab980>,
+      volatilityReference: <BN: 88b80>
+    },
+    padding1: [ <BN: 0>, <BN: 0> ]
+  },
+  tokenAMint: PublicKey [PublicKey(7CNtoYE5zxNhfFxzz11H8aJ9wDXfU9WS3pKAWifVpump)] {
+    _bn: <BN: 5c1043de9af52bbafc088606148a9da8f3929aed9ea2ea2dade38da39207d00f>
+  },
+  tokenBMint: PublicKey [PublicKey(So11111111111111111111111111111111111111112)] {
+    _bn: <BN: 69b8857feab8184fb687f634618c035dac439dc1aeb3b5598a0f00000000001>
+  },
+  tokenAVault: PublicKey [PublicKey(9KTXxoKoNFCDbDayZcm7wLWawJrvfoZCKD5fQdNBcd2X)] {
+    _bn: <BN: 7b97f3adb971c804a0d583dbf8232f7ff586cfbbcf34da2950fea6839d8e6620>
+  },
+  tokenBVault: PublicKey [PublicKey(4EJ3E6PmpX6ZSQbdjzi5ZkagjeeRGhek57KxRYjQstht)] {
+    _bn: <BN: 2ffae06c0fc09773b6ce9006d4bcf4d8a8759c19c872b2536623873e80356caf>
+  },
+  whitelistedVault: PublicKey [PublicKey(11111111111111111111111111111111)] {
+    _bn: <BN: 0>
+  },
+  partner: PublicKey [PublicKey(11111111111111111111111111111111)] {
+    _bn: <BN: 0>
+  },
+  liquidity: <BN: 1102f88ba72369902a3525e472>,
+  padding: <BN: 0>,
+  protocolAFee: <BN: 0>,
+  protocolBFee: <BN: 95f7b93>,
+  partnerAFee: <BN: 0>,
+  partnerBFee: <BN: 0>,
+  sqrtMinPrice: <BN: 100013b50>,
+  sqrtMaxPrice: <BN: fffec4b1845c1aa94e69579b>,
+  sqrtPrice: <BN: 23e676dccd0d342>,
+  activationPoint: <BN: 68a231d7>,
+  activationType: 1,
+  poolStatus: 0,
+  tokenAFlag: 0,
+  tokenBFlag: 0,
+  collectFeeMode: 1,
+  poolType: 0,
+  padding0: [ 0, 0 ],
+  feeAPerLiquidity: [
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0
+  ],
+  feeBPerLiquidity: [
+    38, 208, 28, 124, 204, 2, 145, 5, 0,
+     0,   0,  0,   0,   0, 0,   0, 0, 0,
+     0,   0,  0,   0,   0, 0,   0, 0, 0,
+     0,   0,  0,   0,   0
+  ],
+  permanentLockLiquidity: <BN: 0>,
+  metrics: {
+    totalLpAFee: <BN: 0>,
+    totalLpBFee: <BN: 291c83ac>,
+    totalProtocolAFee: <BN: 0>,
+    totalProtocolBFee: <BN: 95f7b93>,
+    totalPartnerAFee: <BN: 0>,
+    totalPartnerBFee: <BN: 0>,
+    totalPosition: <BN: 8>,
+    padding: <BN: 0>
+  },
+  creator: PublicKey [PublicKey(U9VnKJqyb7jrYpX3B4FcwAitwHAzs3YwTd9kRKW99Vu)] {
+    _bn: <BN: 6f449df36a87ac7a4e63666e83bba37d67d92682301d1c34f7c60010cf3527c>
+  },
+  padding1: [ <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0> ],
+  rewardInfos: [
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    },
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    }
+  ]
+}
+  Información de la pool obtenida: Token A: 7CNtoYE5zxNhfFxzz11H8aJ9wDXfU9WS3pKAWifVpump, Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 49.39%
+  Verificando si el token 7CNtoYE5zxNhfFxzz11H8aJ9wDXfU9WS3pKAWifVpump es swappable en Jupiter.
+    Token 7CNtoYE5zxNhfFxzz11H8aJ9wDXfU9WS3pKAWifVpump no encontrado en la lista de tokens de Jupiter.
+    No se pudieron obtener los decimales para el token 7CNtoYE5zxNhfFxzz11H8aJ9wDXfU9WS3pKAWifVpump.
+  Token A (7CNtoYE5zxNhfFxzz11H8aJ9wDXfU9WS3pKAWifVpump) swappable en Jupiter: false
+  Token So11111111111111111111111111111111111111112 es SOL/WSOL o USDC, no se considera swappable para arbitraje.
+  Token B (So11111111111111111111111111111111111111112) swappable en Jupiter: false
+  Pool ETpQ2wEaXARHq6FR2NsVbbmSzAfvrgXZjBwKYkBSVfma descartada por baja liquidez en Meteora ($14.50 USD).
+  Pool DuKxFQQ5FTNH2bn8gJ2qS919DNfbEeM6A3sDdp598F1o descartada por baja liquidez en Meteora ($0.00 USD).
+Analizando pool de Meteora: BVeMQKuSSYBzxCGNSrS5LZy57CAH3axN1o9aQwuNQ7ie (createdAt: 2025-08-17T19:43:59.000Z, Liquidez: $452.02 USD)
+Intentando obtener pool info para: BVeMQKuSSYBzxCGNSrS5LZy57CAH3axN1o9aQwuNQ7ie
+  PoolState encontrado para BVeMQKuSSYBzxCGNSrS5LZy57CAH3axN1o9aQwuNQ7ie: {
+  poolFees: {
+    baseFee: {
+      cliffFeeNumerator: <BN: 2625a00>,
+      feeSchedulerMode: 0,
+      padding0: [Array],
+      numberOfPeriod: 0,
+      periodFrequency: <BN: 0>,
+      reductionFactor: <BN: 0>,
+      padding1: <BN: 0>
+    },
+    protocolFeePercent: 20,
+    partnerFeePercent: 0,
+    referralFeePercent: 20,
+    padding0: [ 0, 0, 0, 0, 0 ],
+    dynamicFee: {
+      initialized: 1,
+      padding: [Array],
+      maxVolatilityAccumulator: 14460000,
+      variableFeeControl: 3826,
+      binStep: 1,
+      filterPeriod: 10,
+      decayPeriod: 120,
+      reductionFactor: 5000,
+      lastUpdateTimestamp: <BN: 68a236a8>,
+      binStepU128: <BN: 68db8bac710cb>,
+      sqrtPriceReference: <BN: 3382a2d49963a6>,
+      volatilityAccumulator: <BN: cccfa4>,
+      volatilityReference: <BN: 280424>
+    },
+    padding1: [ <BN: 0>, <BN: 0> ]
+  },
+  tokenAMint: PublicKey [PublicKey(7CWjhAhjwo2zssDYhf9egJwibCeUBALCrNaDzhMXM777)] {
+    _bn: <BN: 5c1922160a97adc10deb4c2dfa5a7a25d4e6e31310adeafd88417297f5e5763a>
+  },
+  tokenBMint: PublicKey [PublicKey(So11111111111111111111111111111111111111112)] {
+    _bn: <BN: 69b8857feab8184fb687f634618c035dac439dc1aeb3b5598a0f00000000001>
+  },
+  tokenAVault: PublicKey [PublicKey(AqnHL4pWZZutyBNMNpWDmoR7GHS4LuRYum9EDDcfdtqM)] {
+    _bn: <BN: 923842db7cc66004bf21c3ced51ea6bba5b2a27891455ac92622efe80d8f6200>
+  },
+  tokenBVault: PublicKey [PublicKey(DfTDHvvWfBJAFKUyuos8WDsfiyeGQBH7VsKxy75V3yR2)] {
+    _bn: <BN: bc25f3a81b94b8d6c0c049b24203b8d876109f79e673f335f62266a3e803c261>
+  },
+  whitelistedVault: PublicKey [PublicKey(11111111111111111111111111111111)] {
+    _bn: <BN: 0>
+  },
+  partner: PublicKey [PublicKey(11111111111111111111111111111111)] {
+    _bn: <BN: 0>
+  },
+  liquidity: <BN: 187dc67c38e0b4195c9c54d090a>,
+  padding: <BN: 0>,
+  protocolAFee: <BN: 66750b5191d>,
+  protocolBFee: <BN: 270a27>,
+  partnerAFee: <BN: 0>,
+  partnerBFee: <BN: 0>,
+  sqrtMinPrice: <BN: 100013b50>,
+  sqrtMaxPrice: <BN: fffec4b1845c1aa94e69579b>,
+  sqrtPrice: <BN: 30de6381936f8a>,
+  activationPoint: <BN: 68a230ff>,
+  activationType: 1,
+  poolStatus: 0,
+  tokenAFlag: 1,
+  tokenBFlag: 0,
+  collectFeeMode: 0,
+  poolType: 0,
+  padding0: [ 0, 0 ],
+  feeAPerLiquidity: [
+    254, 170, 61, 231, 165, 97, 6, 78, 22,
+      0,   0,  0,   0,   0,  0, 0,  0,  0,
+      0,   0,  0,   0,   0,  0, 0,  0,  0,
+      0,   0,  0,   0,   0
+  ],
+  feeBPerLiquidity: [
+    252, 57, 49, 121, 110, 123, 0, 0, 0,
+      0,  0,  0,   0,   0,   0, 0, 0, 0,
+      0,  0,  0,   0,   0,   0, 0, 0, 0,
+      0,  0,  0,   0,   0
+  ],
+  permanentLockLiquidity: <BN: 0>,
+  metrics: {
+    totalLpAFee: <BN: 199d42d464b2>,
+    totalLpBFee: <BN: 9c28bd>,
+    totalProtocolAFee: <BN: 66750b5191d>,
+    totalProtocolBFee: <BN: 270a27>,
+    totalPartnerAFee: <BN: 0>,
+    totalPartnerBFee: <BN: 0>,
+    totalPosition: <BN: 1>,
+    padding: <BN: 0>
+  },
+  creator: PublicKey [PublicKey(47qZKp2VENZx7brxFMUBVtNJ5ihEN6Ub2GTSCq6Xnixc)] {
+    _bn: <BN: 2e537316bc4678cf48742365a5308c53967be86a1b6e2cc616fa12805b7794e5>
+  },
+  padding1: [ <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0> ],
+  rewardInfos: [
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    },
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    }
+  ]
+}
+  Información de la pool obtenida: Token A: 7CWjhAhjwo2zssDYhf9egJwibCeUBALCrNaDzhMXM777, Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 4.00%
+  Verificando si el token 7CWjhAhjwo2zssDYhf9egJwibCeUBALCrNaDzhMXM777 es swappable en Jupiter.
+    Token 7CWjhAhjwo2zssDYhf9egJwibCeUBALCrNaDzhMXM777 no encontrado en la lista de tokens de Jupiter.
+    No se pudieron obtener los decimales para el token 7CWjhAhjwo2zssDYhf9egJwibCeUBALCrNaDzhMXM777.
+  Token A (7CWjhAhjwo2zssDYhf9egJwibCeUBALCrNaDzhMXM777) swappable en Jupiter: false
+  Token So11111111111111111111111111111111111111112 es SOL/WSOL o USDC, no se considera swappable para arbitraje.
+  Token B (So11111111111111111111111111111111111111112) swappable en Jupiter: false
+  Pool C8tAHVV4YikaRFEazZJHz85Z2ZL1ohiMs8FsrHbgQeiS descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool E98yaU8JR4ocY4LReZ7dohtM9AEgFsmGr5AHYmbo6d5K descartada por baja liquidez en Meteora ($12.45 USD).
+  Pool 5GHY57UAZFwnhfTviFoJRsa4oMDfAFMAhqTt7ndLhuTp descartada por baja liquidez en Meteora ($6.38 USD).
+  Pool 7g3c2KZQziNnMuxBVrHwzr4kGegkLAqtgbLfff8rJRcX descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool Heya3PvCNF8BzSHme8rU2V79iqqhwrLizGMbPGYNQ2mw descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool YjFYpG8JMjGSvjziwPZWTie93tfYgrNqcRcNyPHjjMh descartada por baja liquidez en Meteora ($15.18 USD).
+  Pool 5wTK9z5cRK5k2nwopaG49roMtUTAq2Ft4xtFo2rxrhkT descartada por baja liquidez en Meteora ($1.10 USD).
+  Pool 2CrMYTFpJLz33rLVUAvz8W1uE2FPrR8W1FcFvR6ZqigG descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool CtxEGwmP2cCsNaY36AHbWGhPLMJ9uJGucpjtHKCPS2KT descartada por baja liquidez en Meteora ($87.94 USD).
+  Pool 8TUDs1q6DyGYqrJb1oybkR5hRqa8vQmwAgAui6PDFw1z descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool 7m4TCqGXQECDUzq1ncHuUL5e75uNykj6TDsWn5ST3YMH descartada por baja liquidez en Meteora ($7.80 USD).
+  Pool Jd4LRUnQozrswXsSofsEbnmVFUfStoieb5dTaBfsAUW descartada por baja liquidez en Meteora ($44.64 USD).
+  Pool CcTehEJimVoipsNktX2iQgZt3e8Xwyx5vCYuX6x2Pvu7 descartada por baja liquidez en Meteora ($14.81 USD).
+  Pool FeRqB2AUcEEK5auLe65y9C14hhyCnjLfm812WFuephRs descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool BEXjkdRpD9Piws9CA4eCTxx2XZaMWsFdznD8kYNWwPXM descartada por baja liquidez en Meteora ($36.74 USD).
+  Pool D1RRaAgfqfs61d2teoXbr6xvwoUXjvMPsfMaRAN3Af4x descartada por baja liquidez en Meteora ($2.83 USD).
+  Pool AdPPRWg4PRJpAKv4y1x1adqKnqSNCjtAE5MZM6z1YYCx descartada por baja liquidez en Meteora ($3.27 USD).
+  Pool BNgrq1pprhZFRzPtgomvg2pDnmnosGN7JJ2N12kAap5v descartada por baja liquidez en Meteora ($92.45 USD).
+  Pool Et6uSZQ8aV47fTi7EUqmKQbrRyBUoc1TozXqfG6nrwvV descartada por baja liquidez en Meteora ($5.61 USD).
+  Pool CzGzhd3y35FzBKsfEW6s4aqMaSk2ittZDbQsPcfNiKfK descartada por baja liquidez en Meteora ($50.33 USD).
+  Pool 2uWNfP3wzHHoUSwzXqrkwvJeifBpUt8bkP2sZq1AyjeK descartada por baja liquidez en Meteora ($5.48 USD).
+Analizando pool de Meteora: 3ru2koJBhHZFTz3gZLDA3mPVpRQN27ALiS8nqvmBPRP5 (createdAt: 2025-08-17T19:03:47.000Z, Liquidez: $849.96 USD)
+Intentando obtener pool info para: 3ru2koJBhHZFTz3gZLDA3mPVpRQN27ALiS8nqvmBPRP5
+  PoolState encontrado para 3ru2koJBhHZFTz3gZLDA3mPVpRQN27ALiS8nqvmBPRP5: {
+  poolFees: {
+    baseFee: {
+      cliffFeeNumerator: <BN: 1dcd6500>,
+      feeSchedulerMode: 0,
+      padding0: [Array],
+      numberOfPeriod: 144,
+      periodFrequency: <BN: 258>,
+      reductionFactor: <BN: 2e9fc4>,
+      padding1: <BN: 0>
+    },
+    protocolFeePercent: 20,
+    partnerFeePercent: 0,
+    referralFeePercent: 20,
+    padding0: [ 0, 0, 0, 0, 0 ],
+    dynamicFee: {
+      initialized: 1,
+      padding: [Array],
+      maxVolatilityAccumulator: 14460000,
+      variableFeeControl: 5739,
+      binStep: 1,
+      filterPeriod: 10,
+      decayPeriod: 120,
+      reductionFactor: 5000,
+      lastUpdateTimestamp: <BN: 68a234d8>,
+      binStepU128: <BN: 68db8bac710cb>,
+      sqrtPriceReference: <BN: 21dca0190fa0d2>,
+      volatilityAccumulator: <BN: 512d40>,
+      volatilityReference: <BN: 0>
+    },
+    padding1: [ <BN: 0>, <BN: 0> ]
+  },
+  tokenAMint: PublicKey [PublicKey(3EiG7s5dzNLY5U3v6LemtE31amfyTMPdYM3giZe7c777)] {
+    _bn: <BN: 213a93f47317298b80167ae06816f803012e0a8a9f4258309504d85086f58bb2>
+  },
+  tokenBMint: PublicKey [PublicKey(So11111111111111111111111111111111111111112)] {
+    _bn: <BN: 69b8857feab8184fb687f634618c035dac439dc1aeb3b5598a0f00000000001>
+  },
+  tokenAVault: PublicKey [PublicKey(6DSq5hJHzVkNCw5ouvPVAmaXqnk9JQYqwcpM72gGcysu)] {
+    _bn: <BN: 4d7a9bf8b14bd02f3b298eea7e84b825d1c15d57c6637ad0fc6337acc0370970>
+  },
+  tokenBVault: PublicKey [PublicKey(BsZionKVpWAJ8pt5NozuHLpJaNEPLvaow5Z6QtTrZWrA)] {
+    _bn: <BN: a188e8415a41b226474776e18de9c71f6d3b59ada0bc8557877e4f59039cf4c7>
+  },
+  whitelistedVault: PublicKey [PublicKey(11111111111111111111111111111111)] {
+    _bn: <BN: 0>
+  },
+  partner: PublicKey [PublicKey(11111111111111111111111111111111)] {
+    _bn: <BN: 0>
+  },
+  liquidity: <BN: 42fd7a7627c885b4ca6b0e97a62>,
+  padding: <BN: 0>,
+  protocolAFee: <BN: 0>,
+  protocolBFee: <BN: 30e98beb>,
+  partnerAFee: <BN: 0>,
+  partnerBFee: <BN: 0>,
+  sqrtMinPrice: <BN: 100013b50>,
+  sqrtMaxPrice: <BN: fffec4b1845c1aa94e69579b>,
+  sqrtPrice: <BN: 20fb4104eb3136>,
+  activationPoint: <BN: 68a22793>,
+  activationType: 1,
+  poolStatus: 0,
+  tokenAFlag: 1,
+  tokenBFlag: 0,
+  collectFeeMode: 1,
+  poolType: 0,
+  padding0: [ 0, 0 ],
+  feeAPerLiquidity: [
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0
+  ],
+  feeBPerLiquidity: [
+    78, 21, 10, 66, 60, 108, 90, 0, 0,
+     0,  0,  0,  0,  0,   0,  0, 0, 0,
+     0,  0,  0,  0,  0,   0,  0, 0, 0,
+     0,  0,  0,  0,  0
+  ],
+  permanentLockLiquidity: <BN: 0>,
+  metrics: {
+    totalLpAFee: <BN: 0>,
+    totalLpBFee: <BN: c7c179c1>,
+    totalProtocolAFee: <BN: 0>,
+    totalProtocolBFee: <BN: 30e98beb>,
+    totalPartnerAFee: <BN: 0>,
+    totalPartnerBFee: <BN: 0>,
+    totalPosition: <BN: b>,
+    padding: <BN: 0>
+  },
+  creator: PublicKey [PublicKey(Eqr81odwUe6GNzU8SH4wgk61Ednu197X51uXqnSDXJx4)] {
+    _bn: <BN: cdab599f73fe343fc1b53975f08025510417310073c3dc48eaf0a51098e92d2d>
+  },
+  padding1: [ <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0> ],
+  rewardInfos: [
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    },
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    }
+  ]
+}
+  Información de la pool obtenida: Token A: 3EiG7s5dzNLY5U3v6LemtE31amfyTMPdYM3giZe7c777, Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 48.17%
+  Verificando si el token 3EiG7s5dzNLY5U3v6LemtE31amfyTMPdYM3giZe7c777 es swappable en Jupiter.
+    Token 3EiG7s5dzNLY5U3v6LemtE31amfyTMPdYM3giZe7c777 no encontrado en la lista de tokens de Jupiter.
+    No se pudieron obtener los decimales para el token 3EiG7s5dzNLY5U3v6LemtE31amfyTMPdYM3giZe7c777.
+  Token A (3EiG7s5dzNLY5U3v6LemtE31amfyTMPdYM3giZe7c777) swappable en Jupiter: false
+  Token So11111111111111111111111111111111111111112 es SOL/WSOL o USDC, no se considera swappable para arbitraje.
+  Token B (So11111111111111111111111111111111111111112) swappable en Jupiter: false
+  Pool 5Cfk3pAt5qvvP7RTkBJwHFUSvjEBhS3bGKG3FkiXAwtg descartada por baja liquidez en Meteora ($8.59 USD).
+  Pool DcVLCXR2piNYDT1RAq6YWxUvGDrEch5DaB3ShWKdfus4 descartada por baja liquidez en Meteora ($26.27 USD).
+  Pool zFarffYKBmdxaxrebktiPbwHH1pvKHLMetQBSABhts8 descartada por baja liquidez en Meteora ($21.01 USD).
+  Pool F6nhsunkZdMpB3H3281AoJMXrs763VWmhcNCFT5TojhE descartada por baja liquidez en Meteora ($30.94 USD).
+  Pool GWTRWxo4eaJqjYYYtLzgKBX2g3em7mpnhrQxJ5VjHJhq descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool HN4NPnsB8wSyX1gFBa22UdRnBbZUxr2JQRm463H4eXZo descartada por baja liquidez en Meteora ($8.04 USD).
+  Pool 8ryNgFPuiJxJVX4vm2BkegfWFdC4SdXodVo42RkUrciu descartada por baja liquidez en Meteora ($37.78 USD).
+  Pool C8Kct7XtHkkcZZ835HBYXg3WXTdoYMhvZhtEwJZCscWc descartada por baja liquidez en Meteora ($8.61 USD).
+  Pool Bxkk2ScstzwowPixoseGhwNtrQZHx7upUcdshuzMGoyZ descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool nuBGk3Agjnt5TevBc5ENjbj2r4bFa8LAKrkEziqcdyZ descartada por baja liquidez en Meteora ($0.75 USD).
+  Pool Fme4EBzGw3YZZucJEFyNLGJAEAYpboFg5AAQukVMuXkX descartada por baja liquidez en Meteora ($5.36 USD).
+  Pool QtsnKDLebjQobWnjYnhHNd6G55bJyXaVpQKmB6uKQuC descartada por baja liquidez en Meteora ($5.20 USD).
+  Pool kSVegjDKSvg71QqwG6izLWpW7nfN8e3SB3vMvfgGqwi descartada por baja liquidez en Meteora ($0.96 USD).
+Analizando pool de Meteora: FxBhPfJakg69tMi9RqJmFurfjrx7PUtdD54dUbUUNTef (createdAt: 2025-08-17T18:48:11.000Z, Liquidez: $272.91 USD)
+Intentando obtener pool info para: FxBhPfJakg69tMi9RqJmFurfjrx7PUtdD54dUbUUNTef
+  PoolState encontrado para FxBhPfJakg69tMi9RqJmFurfjrx7PUtdD54dUbUUNTef: {
+  poolFees: {
+    baseFee: {
+      cliffFeeNumerator: <BN: 1dcd6500>,
+      feeSchedulerMode: 0,
+      padding0: [Array],
+      numberOfPeriod: 144,
+      periodFrequency: <BN: 258>,
+      reductionFactor: <BN: 2e9fc4>,
+      padding1: <BN: 0>
+    },
+    protocolFeePercent: 20,
+    partnerFeePercent: 0,
+    referralFeePercent: 20,
+    padding0: [ 0, 0, 0, 0, 0 ],
+    dynamicFee: {
+      initialized: 1,
+      padding: [Array],
+      maxVolatilityAccumulator: 14460000,
+      variableFeeControl: 5739,
+      binStep: 1,
+      filterPeriod: 10,
+      decayPeriod: 120,
+      reductionFactor: 5000,
+      lastUpdateTimestamp: <BN: 68a2335b>,
+      binStepU128: <BN: 68db8bac710cb>,
+      sqrtPriceReference: <BN: 52f8d8ec6dbe729>,
+      volatilityAccumulator: <BN: dca460>,
+      volatilityReference: <BN: 0>
+    },
+    padding1: [ <BN: 0>, <BN: 0> ]
+  },
+  tokenAMint: PublicKey [PublicKey(GLgLivx3B761MTCFyTTvmjp7EyiH9qG6erenAAyapump)] {
+    _bn: <BN: e3e9d23a78dd650c8fc47209c3cc6b19c0ce6947b7d9f687b3df7b330ae2ce9f>
+  },
+  tokenBMint: PublicKey [PublicKey(So11111111111111111111111111111111111111112)] {
+    _bn: <BN: 69b8857feab8184fb687f634618c035dac439dc1aeb3b5598a0f00000000001>
+  },
+  tokenAVault: PublicKey [PublicKey(7K2nx9mYXhC1zewk4uz72Ffocfi31LWSCZjjoed5npAd)] {
+    _bn: <BN: 5dc49a461ed5a5eaf4650bc1d5a8a2dfba357e3cd746a1d80a841883c6a8e3d2>
+  },
+  tokenBVault: PublicKey [PublicKey(DjQqD3wfYLFDJFt4sMmh22DGCP2QaU2VKD6aNStQrFXs)] {
+    _bn: <BN: bd29954516f2f72e1b76d5383b3ad95cde1df512b77ed9577802c194bdd2d7ae>
+  },
+  whitelistedVault: PublicKey [PublicKey(11111111111111111111111111111111)] {
+    _bn: <BN: 0>
+  },
+  partner: PublicKey [PublicKey(11111111111111111111111111111111)] {
+    _bn: <BN: 0>
+  },
+  liquidity: <BN: 7c1eb94217b119d1cbeda9c86>,
+  padding: <BN: 0>,
+  protocolAFee: <BN: 0>,
+  protocolBFee: <BN: 17bdfc3>,
+  partnerAFee: <BN: 0>,
+  partnerBFee: <BN: 0>,
+  sqrtMinPrice: <BN: 100013b50>,
+  sqrtMaxPrice: <BN: fffec4b1845c1aa94e69579b>,
+  sqrtPrice: <BN: 4bb6411eafe953c>,
+  activationPoint: <BN: 68a223eb>,
+  activationType: 1,
+  poolStatus: 0,
+  tokenAFlag: 0,
+  tokenBFlag: 0,
+  collectFeeMode: 1,
+  poolType: 0,
+  padding0: [ 0, 0 ],
+  feeAPerLiquidity: [
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0
+  ],
+  feeBPerLiquidity: [
+    179, 47, 84, 114, 146, 130, 103, 1, 0,
+      0,  0,  0,   0,   0,   0,   0, 0, 0,
+      0,  0,  0,   0,   0,   0,   0, 0, 0,
+      0,  0,  0,   0,   0
+  ],
+  permanentLockLiquidity: <BN: 0>,
+  metrics: {
+    totalLpAFee: <BN: 0>,
+    totalLpBFee: <BN: 71979f9>,
+    totalProtocolAFee: <BN: 0>,
+    totalProtocolBFee: <BN: 17bdfc3>,
+    totalPartnerAFee: <BN: 0>,
+    totalPartnerBFee: <BN: 0>,
+    totalPosition: <BN: 11>,
+    padding: <BN: 0>
+  },
+  creator: PublicKey [PublicKey(FLUP4HJXgvgwBF4m4534gGbN4XqoU97YNV4CMNnbuGET)] {
+    _bn: <BN: d5009c80103732a1035048ec0498324dc1639758ee0612f5a9f78040c3bc37c8>
+  },
+  padding1: [ <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0> ],
+  rewardInfos: [
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    },
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    }
+  ]
+}
+  Información de la pool obtenida: Token A: GLgLivx3B761MTCFyTTvmjp7EyiH9qG6erenAAyapump, Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 47.56%
+  Verificando si el token GLgLivx3B761MTCFyTTvmjp7EyiH9qG6erenAAyapump es swappable en Jupiter.
+    Token GLgLivx3B761MTCFyTTvmjp7EyiH9qG6erenAAyapump no encontrado en la lista de tokens de Jupiter.
+    No se pudieron obtener los decimales para el token GLgLivx3B761MTCFyTTvmjp7EyiH9qG6erenAAyapump.
+  Token A (GLgLivx3B761MTCFyTTvmjp7EyiH9qG6erenAAyapump) swappable en Jupiter: false
+  Token So11111111111111111111111111111111111111112 es SOL/WSOL o USDC, no se considera swappable para arbitraje.
+  Token B (So11111111111111111111111111111111111111112) swappable en Jupiter: false
+  Pool 2dVpdfRDDTF9Mx1eFd8rRkjY7ttTW9v24mYVKv56oFb9 descartada por baja liquidez en Meteora ($7.59 USD).
+  Pool Gm4QbUt3dKoES9B1rx5d8YcDRoHGSEaeraFEgrxaiJVe descartada por baja liquidez en Meteora ($8.54 USD).
+  Pool D1TS9ujV5dN2hKyVDHNVfR3L2EdLgZHdZBuHZDg3Qi56 descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool 21wVzfNn1zsNV3y29ddQZLcKJzxbXyRXJeUy2y9GgVVv descartada por baja liquidez en Meteora ($21.14 USD).
+  Pool EiypxU7p7NyTmcnA1nPVP4PvJrHPFkKizXzpVQRd7xoF descartada por baja liquidez en Meteora ($0.96 USD).
+Analizando pool de Meteora: FbVaWoLfKGFYPUY6tmbvnaVaCQJM71obuUAJh389i2KW (createdAt: 2025-08-17T18:40:50.000Z, Liquidez: $587.69 USD)
+Intentando obtener pool info para: FbVaWoLfKGFYPUY6tmbvnaVaCQJM71obuUAJh389i2KW
+  PoolState encontrado para FbVaWoLfKGFYPUY6tmbvnaVaCQJM71obuUAJh389i2KW: {
+  poolFees: {
+    baseFee: {
+      cliffFeeNumerator: <BN: 1dcd6500>,
+      feeSchedulerMode: 0,
+      padding0: [Array],
+      numberOfPeriod: 144,
+      periodFrequency: <BN: 258>,
+      reductionFactor: <BN: 2e9fc4>,
+      padding1: <BN: 0>
+    },
+    protocolFeePercent: 20,
+    partnerFeePercent: 0,
+    referralFeePercent: 20,
+    padding0: [ 0, 0, 0, 0, 0 ],
+    dynamicFee: {
+      initialized: 1,
+      padding: [Array],
+      maxVolatilityAccumulator: 14460000,
+      variableFeeControl: 5739,
+      binStep: 1,
+      filterPeriod: 10,
+      decayPeriod: 120,
+      reductionFactor: 5000,
+      lastUpdateTimestamp: <BN: 68a22c3f>,
+      binStepU128: <BN: 68db8bac710cb>,
+      sqrtPriceReference: <BN: 665b7dc16991017>,
+      volatilityAccumulator: <BN: dca460>,
+      volatilityReference: <BN: 1b948c>
+    },
+    padding1: [ <BN: 0>, <BN: 0> ]
+  },
+  tokenAMint: PublicKey [PublicKey(HskhujcVzfYmLnU9EX7bcnSbgAiiVFVSsBNdMnQ3ZV46)] {
+    _bn: <BN: fabb72f5035d3c3cdae070fc26bacfeff2732be334f31867a7c0648e4e1b5a63>
+  },
+  tokenBMint: PublicKey [PublicKey(So11111111111111111111111111111111111111112)] {
+    _bn: <BN: 69b8857feab8184fb687f634618c035dac439dc1aeb3b5598a0f00000000001>
+  },
+  tokenAVault: PublicKey [PublicKey(Hfty924WeD8qyYEGHSauAzTfBKztXHEJCcjV6mpVpnLt)] {
+    _bn: <BN: f7b1d2655e355f95e6297c1b598e9d3df573641d16cf5abb7f49997b451ae2cd>
+  },
+  tokenBVault: PublicKey [PublicKey(JAYUDqBAXj6rMGifVgwcdvtA5B4mpivmHdhHBdGpiXdB)] {
+    _bn: <BN: ff087ccdd9f929b07f86eae9c8e03d624dfbadb08e7aeeb296565fbbb7fee722>
+  },
+  whitelistedVault: PublicKey [PublicKey(11111111111111111111111111111111)] {
+    _bn: <BN: 0>
+  },
+  partner: PublicKey [PublicKey(11111111111111111111111111111111)] {
+    _bn: <BN: 0>
+  },
+  liquidity: <BN: d84a0b99f40ebcf05e21778b3>,
+  padding: <BN: 0>,
+  protocolAFee: <BN: 0>,
+  protocolBFee: <BN: 1ed5312c>,
+  partnerAFee: <BN: 0>,
+  partnerBFee: <BN: 0>,
+  sqrtMinPrice: <BN: 100013b50>,
+  sqrtMaxPrice: <BN: fffec4b1845c1aa94e69579b>,
+  sqrtPrice: <BN: 57d8fc70173ff1e>,
+  activationPoint: <BN: 68a22232>,
+  activationType: 1,
+  poolStatus: 0,
+  tokenAFlag: 0,
+  tokenBFlag: 0,
+  collectFeeMode: 1,
+  poolType: 0,
+  padding0: [ 0, 0 ],
+  feeAPerLiquidity: [
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0
+  ],
+  feeBPerLiquidity: [
+    226, 132, 225, 122, 1, 49, 189, 53, 0,
+      0,   0,   0,   0, 0,  0,   0,  0, 0,
+      0,   0,   0,   0, 0,  0,   0,  0, 0,
+      0,   0,   0,   0, 0
+  ],
+  permanentLockLiquidity: <BN: 0>,
+  metrics: {
+    totalLpAFee: <BN: 0>,
+    totalLpBFee: <BN: 7dbf6063>,
+    totalProtocolAFee: <BN: 0>,
+    totalProtocolBFee: <BN: 1ed5312c>,
+    totalPartnerAFee: <BN: 0>,
+    totalPartnerBFee: <BN: 0>,
+    totalPosition: <BN: 10>,
+    padding: <BN: 0>
+  },
+  creator: PublicKey [PublicKey(FLUP4HJXgvgwBF4m4534gGbN4XqoU97YNV4CMNnbuGET)] {
+    _bn: <BN: d5009c80103732a1035048ec0498324dc1639758ee0612f5a9f78040c3bc37c8>
+  },
+  padding1: [ <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0> ],
+  rewardInfos: [
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    },
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    }
+  ]
+}
+  Información de la pool obtenida: Token A: HskhujcVzfYmLnU9EX7bcnSbgAiiVFVSsBNdMnQ3ZV46, Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 47.56%
+  Verificando si el token HskhujcVzfYmLnU9EX7bcnSbgAiiVFVSsBNdMnQ3ZV46 es swappable en Jupiter.
+    Token HskhujcVzfYmLnU9EX7bcnSbgAiiVFVSsBNdMnQ3ZV46 no encontrado en la lista de tokens de Jupiter.
+    No se pudieron obtener los decimales para el token HskhujcVzfYmLnU9EX7bcnSbgAiiVFVSsBNdMnQ3ZV46.
+  Token A (HskhujcVzfYmLnU9EX7bcnSbgAiiVFVSsBNdMnQ3ZV46) swappable en Jupiter: false
+  Token So11111111111111111111111111111111111111112 es SOL/WSOL o USDC, no se considera swappable para arbitraje.
+  Token B (So11111111111111111111111111111111111111112) swappable en Jupiter: false
+  Pool gFQq6Z9L7L629mR5Nvobh13Ebm5BQ2d2QzfJNRQKYXK descartada por baja liquidez en Meteora ($11.89 USD).
+  Pool G8YLxwANpCnUi7HdwpDxGRuTNo91hToRGNsPP7iWKhrW descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool QdR1gYeSeSigP5kRSgop5DntizV9GJEU57ggUddX7FF descartada por baja liquidez en Meteora ($0.00 USD).
+Analizando pool de Meteora: 6mRxoNaQxsRMTRgt99mG371LFi1qduf1muonzYQUoesx (createdAt: 2025-08-17T18:32:37.000Z, Liquidez: $214.09 USD)
+Intentando obtener pool info para: 6mRxoNaQxsRMTRgt99mG371LFi1qduf1muonzYQUoesx
+  PoolState encontrado para 6mRxoNaQxsRMTRgt99mG371LFi1qduf1muonzYQUoesx: {
+  poolFees: {
+    baseFee: {
+      cliffFeeNumerator: <BN: 3938700>,
+      feeSchedulerMode: 0,
+      padding0: [Array],
+      numberOfPeriod: 0,
+      periodFrequency: <BN: 0>,
+      reductionFactor: <BN: 0>,
+      padding1: <BN: 0>
+    },
+    protocolFeePercent: 20,
+    partnerFeePercent: 0,
+    referralFeePercent: 20,
+    padding0: [ 0, 0, 0, 0, 0 ],
+    dynamicFee: {
+      initialized: 1,
+      padding: [Array],
+      maxVolatilityAccumulator: 14460000,
+      variableFeeControl: 5739,
+      binStep: 1,
+      filterPeriod: 10,
+      decayPeriod: 120,
+      reductionFactor: 5000,
+      lastUpdateTimestamp: <BN: 68a236bd>,
+      binStepU128: <BN: 68db8bac710cb>,
+      sqrtPriceReference: <BN: c5908a7471d6acf>,
+      volatilityAccumulator: <BN: cd140>,
+      volatilityReference: <BN: 0>
+    },
+    padding1: [ <BN: 0>, <BN: 0> ]
+  },
+  tokenAMint: PublicKey [PublicKey(A7CBQGYvZ3JhBCrHEhVkSBpyyooCygw91tZbcV2gpump)] {
+    _bn: <BN: 874f4ec57e7ada744fbd942e9b70245b7101eb9238e9f8fcfeaccc3f690d025f>
+  },
+  tokenBMint: PublicKey [PublicKey(So11111111111111111111111111111111111111112)] {
+    _bn: <BN: 69b8857feab8184fb687f634618c035dac439dc1aeb3b5598a0f00000000001>
+  },
+  tokenAVault: PublicKey [PublicKey(9N2gk7jYL7XLUsE2VSDpPa1jAQRWfPJqciHygJisSoFw)] {
+    _bn: <BN: 7c40990fd5044e987795460aac2a55f6a6d7f135cff7a88082198889c5af6942>
+  },
+  tokenBVault: PublicKey [PublicKey(6UmVeRFDMbmpjRsKb4Ys2Yf2AcDDxcNbfSUgJbC6mZsy)] {
+    _bn: <BN: 51676d05c3b196b4b471660889238eaa717d8b1165891c685e9f80ec87f49e1c>
+  },
+  whitelistedVault: PublicKey [PublicKey(11111111111111111111111111111111)] {
+    _bn: <BN: 0>
+  },
+  partner: PublicKey [PublicKey(11111111111111111111111111111111)] {
+    _bn: <BN: 0>
+  },
+  liquidity: <BN: 2b214023cf67c1ac7c4437250>,
+  padding: <BN: 0>,
+  protocolAFee: <BN: 14c91e88>,
+  protocolBFee: <BN: 9dcaa>,
+  partnerAFee: <BN: 0>,
+  partnerBFee: <BN: 0>,
+  sqrtMinPrice: <BN: 100013b50>,
+  sqrtMaxPrice: <BN: fffec4b1845c1aa94e69579b>,
+  sqrtPrice: <BN: c4b9659e37cfd2a>,
+  activationPoint: <BN: 68a22045>,
+  activationType: 1,
+  poolStatus: 0,
+  tokenAFlag: 0,
+  tokenBFlag: 0,
+  collectFeeMode: 0,
+  poolType: 0,
+  padding0: [ 0, 0 ],
+  feeAPerLiquidity: [
+    64, 79, 87, 28, 65, 232, 171, 33, 0,
+     0,  0,  0,  0,  0,   0,   0,  0, 0,
+     0,  0,  0,  0,  0,   0,   0,  0, 0,
+     0,  0,  0,  0,  0
+  ],
+  feeBPerLiquidity: [
+    55, 215, 234, 201, 36, 124, 16, 0, 0,
+     0,   0,   0,   0,  0,   0,  0, 0, 0,
+     0,   0,   0,   0,  0,   0,  0, 0, 0,
+     0,   0,   0,   0,  0
+  ],
+  permanentLockLiquidity: <BN: 0>,
+  metrics: {
+    totalLpAFee: <BN: 5ac3f9b9>,
+    totalLpBFee: <BN: 2c6fe5>,
+    totalProtocolAFee: <BN: 14c91e88>,
+    totalProtocolBFee: <BN: 9dcaa>,
+    totalPartnerAFee: <BN: 0>,
+    totalPartnerBFee: <BN: 0>,
+    totalPosition: <BN: 1>,
+    padding: <BN: 0>
+  },
+  creator: PublicKey [PublicKey(9RbxCQdwEnBivpmQgegTSsxZypC8fCJzZMRf6sMhNSi2)] {
+    _bn: <BN: 7d2af46e0fb21dffbc3f55abe829837fd8fe33e69df3143cea6b1545934df517>
+  },
+  padding1: [ <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0> ],
+  rewardInfos: [
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    },
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    }
+  ]
+}
+  Información de la pool obtenida: Token A: A7CBQGYvZ3JhBCrHEhVkSBpyyooCygw91tZbcV2gpump, Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 6.00%
+  Verificando si el token A7CBQGYvZ3JhBCrHEhVkSBpyyooCygw91tZbcV2gpump es swappable en Jupiter.
+    Token A7CBQGYvZ3JhBCrHEhVkSBpyyooCygw91tZbcV2gpump no encontrado en la lista de tokens de Jupiter.
+    No se pudieron obtener los decimales para el token A7CBQGYvZ3JhBCrHEhVkSBpyyooCygw91tZbcV2gpump.
+  Token A (A7CBQGYvZ3JhBCrHEhVkSBpyyooCygw91tZbcV2gpump) swappable en Jupiter: false
+  Token So11111111111111111111111111111111111111112 es SOL/WSOL o USDC, no se considera swappable para arbitraje.
+  Token B (So11111111111111111111111111111111111111112) swappable en Jupiter: false
+Analizando pool de Meteora: HFnbFfc6n4TGRChq3Gb3Fu6bXMKFGgeKDwZQCo3PS77q (createdAt: 2025-08-17T18:31:48.000Z, Liquidez: $414.14 USD)
+Intentando obtener pool info para: HFnbFfc6n4TGRChq3Gb3Fu6bXMKFGgeKDwZQCo3PS77q
+  PoolState encontrado para HFnbFfc6n4TGRChq3Gb3Fu6bXMKFGgeKDwZQCo3PS77q: {
+  poolFees: {
+    baseFee: {
+      cliffFeeNumerator: <BN: 1dcd6500>,
+      feeSchedulerMode: 0,
+      padding0: [Array],
+      numberOfPeriod: 144,
+      periodFrequency: <BN: 258>,
+      reductionFactor: <BN: 2e9fc4>,
+      padding1: <BN: 0>
+    },
+    protocolFeePercent: 20,
+    partnerFeePercent: 0,
+    referralFeePercent: 20,
+    padding0: [ 0, 0, 0, 0, 0 ],
+    dynamicFee: {
+      initialized: 1,
+      padding: [Array],
+      maxVolatilityAccumulator: 14460000,
+      variableFeeControl: 5739,
+      binStep: 1,
+      filterPeriod: 10,
+      decayPeriod: 120,
+      reductionFactor: 5000,
+      lastUpdateTimestamp: <BN: 68a221f7>,
+      binStepU128: <BN: 68db8bac710cb>,
+      sqrtPriceReference: <BN: 2a2a062b70257b>,
+      volatilityAccumulator: <BN: c3993e>,
+      volatilityReference: <BN: 42d07e>
+    },
+    padding1: [ <BN: 0>, <BN: 0> ]
+  },
+  tokenAMint: PublicKey [PublicKey(7CWjhAhjwo2zssDYhf9egJwibCeUBALCrNaDzhMXM777)] {
+    _bn: <BN: 5c1922160a97adc10deb4c2dfa5a7a25d4e6e31310adeafd88417297f5e5763a>
+  },
+  tokenBMint: PublicKey [PublicKey(So11111111111111111111111111111111111111112)] {
+    _bn: <BN: 69b8857feab8184fb687f634618c035dac439dc1aeb3b5598a0f00000000001>
+  },
+  tokenAVault: PublicKey [PublicKey(J2h9L4ySENskCi7v9PuJTn2mRUPWoy1YdpkSWDzdDjUK)] {
+    _bn: <BN: fd05a6296dc9c02e83535992b4c29f2f3539ae1204f8db4bf9a60c52eb722d58>
+  },
+  tokenBVault: PublicKey [PublicKey(E9i6X3MN4rdBcQWNZNMSsGerd7VpKaK6j5kHpuMnCtrd)] {
+    _bn: <BN: c3630afdc3464a750334933fc224e72f4027bf8d340bc9f2b0b96afca92595f2>
+  },
+  whitelistedVault: PublicKey [PublicKey(11111111111111111111111111111111)] {
+    _bn: <BN: 0>
+  },
+  partner: PublicKey [PublicKey(11111111111111111111111111111111)] {
+    _bn: <BN: 0>
+  },
+  liquidity: <BN: 1976e3537af7e786d22d4baba94>,
+  padding: <BN: 0>,
+  protocolAFee: <BN: 0>,
+  protocolBFee: <BN: 6d8ee52>,
+  partnerAFee: <BN: 0>,
+  partnerBFee: <BN: 0>,
+  sqrtMinPrice: <BN: 100013b50>,
+  sqrtMaxPrice: <BN: fffec4b1845c1aa94e69579b>,
+  sqrtPrice: <BN: 2874c771b4048e>,
+  activationPoint: <BN: 68a22014>,
+  activationType: 1,
+  poolStatus: 0,
+  tokenAFlag: 1,
+  tokenBFlag: 0,
+  collectFeeMode: 1,
+  poolType: 0,
+  padding0: [ 0, 0 ],
+  feeAPerLiquidity: [
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0
+  ],
+  feeBPerLiquidity: [
+    168, 196, 123, 9, 172, 99, 45, 0, 0,
+      0,   0,   0, 0,   0,  0,  0, 0, 0,
+      0,   0,   0, 0,   0,  0,  0, 0, 0,
+      0,   0,   0, 0,   0
+  ],
+  permanentLockLiquidity: <BN: 0>,
+  metrics: {
+    totalLpAFee: <BN: 0>,
+    totalLpBFee: <BN: 1b63b970>,
+    totalProtocolAFee: <BN: 0>,
+    totalProtocolBFee: <BN: 6d8ee52>,
+    totalPartnerAFee: <BN: 0>,
+    totalPartnerBFee: <BN: 0>,
+    totalPosition: <BN: 5>,
+    padding: <BN: 0>
+  },
+  creator: PublicKey [PublicKey(Eqr81odwUe6GNzU8SH4wgk61Ednu197X51uXqnSDXJx4)] {
+    _bn: <BN: cdab599f73fe343fc1b53975f08025510417310073c3dc48eaf0a51098e92d2d>
+  },
+  padding1: [ <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0> ],
+  rewardInfos: [
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    },
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    }
+  ]
+}
+  Información de la pool obtenida: Token A: 7CWjhAhjwo2zssDYhf9egJwibCeUBALCrNaDzhMXM777, Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 47.25%
+  Verificando si el token 7CWjhAhjwo2zssDYhf9egJwibCeUBALCrNaDzhMXM777 es swappable en Jupiter.
+    Token 7CWjhAhjwo2zssDYhf9egJwibCeUBALCrNaDzhMXM777 no encontrado en la lista de tokens de Jupiter.
+    No se pudieron obtener los decimales para el token 7CWjhAhjwo2zssDYhf9egJwibCeUBALCrNaDzhMXM777.
+  Token A (7CWjhAhjwo2zssDYhf9egJwibCeUBALCrNaDzhMXM777) swappable en Jupiter: false
+  Token So11111111111111111111111111111111111111112 es SOL/WSOL o USDC, no se considera swappable para arbitraje.
+  Token B (So11111111111111111111111111111111111111112) swappable en Jupiter: false
+  Pool npcyBNtKFJnynLD341uCqovDBtdvQZuweuUpTHjVzis descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool HC91VfoBCPZ5SYYsm51HpFu2Q9Nkhm9VrC3cuXEVmmth descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool GuJuTciCPAHdsu4YDmhgHkWAXZmyRP2gRpygynxkUyoi descartada por baja liquidez en Meteora ($0.00 USD).
+Analizando pool de Meteora: AZ7wHTpcv1yV96zLmrihQ5RRf18f7LV2gXGYFtVqcUC4 (createdAt: 2025-08-17T18:27:32.000Z, Liquidez: $113.45 USD)
+Intentando obtener pool info para: AZ7wHTpcv1yV96zLmrihQ5RRf18f7LV2gXGYFtVqcUC4
+  PoolState encontrado para AZ7wHTpcv1yV96zLmrihQ5RRf18f7LV2gXGYFtVqcUC4: {
+  poolFees: {
+    baseFee: {
+      cliffFeeNumerator: <BN: 1dcd6500>,
+      feeSchedulerMode: 0,
+      padding0: [Array],
+      numberOfPeriod: 144,
+      periodFrequency: <BN: 258>,
+      reductionFactor: <BN: 2e9fc4>,
+      padding1: <BN: 0>
+    },
+    protocolFeePercent: 20,
+    partnerFeePercent: 0,
+    referralFeePercent: 20,
+    padding0: [ 0, 0, 0, 0, 0 ],
+    dynamicFee: {
+      initialized: 1,
+      padding: [Array],
+      maxVolatilityAccumulator: 14460000,
+      variableFeeControl: 5739,
+      binStep: 1,
+      filterPeriod: 10,
+      decayPeriod: 120,
+      reductionFactor: 5000,
+      lastUpdateTimestamp: <BN: 68a22243>,
+      binStepU128: <BN: 68db8bac710cb>,
+      sqrtPriceReference: <BN: 1c7c33163ea1f6>,
+      volatilityAccumulator: <BN: 9a9250>,
+      volatilityReference: <BN: 6e5230>
+    },
+    padding1: [ <BN: 0>, <BN: 0> ]
+  },
+  tokenAMint: PublicKey [PublicKey(BmtsKCLR1HbyXqHWFhKhN86XFFCdiSym5suEKPHjE777)] {
+    _bn: <BN: a0151254d5c07547602f290a133e77f2dc5b46252eb2b3d184111444415a2662>
+  },
+  tokenBMint: PublicKey [PublicKey(So11111111111111111111111111111111111111112)] {
+    _bn: <BN: 69b8857feab8184fb687f634618c035dac439dc1aeb3b5598a0f00000000001>
+  },
+  tokenAVault: PublicKey [PublicKey(FWQsXcT6q3icLds5KwjxkSt8AwoXARzbL2LKhjnM3qXs)] {
+    _bn: <BN: d78c739f3c8faea739d42e3314a056ae82c9d5649225a29b39ccd54e85928aee>
+  },
+  tokenBVault: PublicKey [PublicKey(531q9LKDceCUq8nxThuzRXNE9hFJyH8YaUBKsrBToaVy)] {
+    _bn: <BN: 3bf2d90e9b9055938f947ba050af0d273b542c83efd1073235195673bd18d084>
+  },
+  whitelistedVault: PublicKey [PublicKey(11111111111111111111111111111111)] {
+    _bn: <BN: 0>
+  },
+  partner: PublicKey [PublicKey(11111111111111111111111111111111)] {
+    _bn: <BN: 0>
+  },
+  liquidity: <BN: a0d1f9765ce88da655f379d063>,
+  padding: <BN: 0>,
+  protocolAFee: <BN: 0>,
+  protocolBFee: <BN: 2a963b9>,
+  partnerAFee: <BN: 0>,
+  partnerBFee: <BN: 0>,
+  sqrtMinPrice: <BN: 100013b50>,
+  sqrtMaxPrice: <BN: fffec4b1845c1aa94e69579b>,
+  sqrtPrice: <BN: 1c13d0d6398a1d>,
+  activationPoint: <BN: 68a21f14>,
+  activationType: 1,
+  poolStatus: 0,
+  tokenAFlag: 1,
+  tokenBFlag: 0,
+  collectFeeMode: 1,
+  poolType: 0,
+  padding0: [ 0, 0 ],
+  feeAPerLiquidity: [
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0
+  ],
+  feeBPerLiquidity: [
+    149, 21, 73, 233, 29, 1, 42, 0, 0,
+      0,  0,  0,   0,  0, 0,  0, 0, 0,
+      0,  0,  0,   0,  0, 0,  0, 0, 0,
+      0,  0,  0,   0,  0
+  ],
+  permanentLockLiquidity: <BN: 0>,
+  metrics: {
+    totalLpAFee: <BN: 0>,
+    totalLpBFee: <BN: ab1a4e2>,
+    totalProtocolAFee: <BN: 0>,
+    totalProtocolBFee: <BN: 2a963b9>,
+    totalPartnerAFee: <BN: 0>,
+    totalPartnerBFee: <BN: 0>,
+    totalPosition: <BN: 6>,
+    padding: <BN: 0>
+  },
+  creator: PublicKey [PublicKey(Eqr81odwUe6GNzU8SH4wgk61Ednu197X51uXqnSDXJx4)] {
+    _bn: <BN: cdab599f73fe343fc1b53975f08025510417310073c3dc48eaf0a51098e92d2d>
+  },
+  padding1: [ <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0> ],
+  rewardInfos: [
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    },
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    }
+  ]
+}
+  Información de la pool obtenida: Token A: BmtsKCLR1HbyXqHWFhKhN86XFFCdiSym5suEKPHjE777, Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 46.94%
+  Verificando si el token BmtsKCLR1HbyXqHWFhKhN86XFFCdiSym5suEKPHjE777 es swappable en Jupiter.
+    Token BmtsKCLR1HbyXqHWFhKhN86XFFCdiSym5suEKPHjE777 no encontrado en la lista de tokens de Jupiter.
+    No se pudieron obtener los decimales para el token BmtsKCLR1HbyXqHWFhKhN86XFFCdiSym5suEKPHjE777.
+  Token A (BmtsKCLR1HbyXqHWFhKhN86XFFCdiSym5suEKPHjE777) swappable en Jupiter: false
+  Token So11111111111111111111111111111111111111112 es SOL/WSOL o USDC, no se considera swappable para arbitraje.
+  Token B (So11111111111111111111111111111111111111112) swappable en Jupiter: false
+  Pool EYGyzHEFVsQ8hWvK1ixPqzPBczUEspncwPNhpMjZ4H29 descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool FwejiJX3Sa4GteKHawoSLzzHCTXJ53kneG4ES1sq7RRh descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool GA5fP66nrTeosx9puNuRaZDJBFfZ4TVpkKyLtrLrAd2m descartada por baja liquidez en Meteora ($0.00 USD).
+Analizando pool de Meteora: 7gYHYtYbPMctSTcwhWao44zY5T1Bh7a4DQ9NQz8jxBoV (createdAt: 2025-08-17T18:18:15.000Z, Liquidez: $163.49 USD)
+Intentando obtener pool info para: 7gYHYtYbPMctSTcwhWao44zY5T1Bh7a4DQ9NQz8jxBoV
+  PoolState encontrado para 7gYHYtYbPMctSTcwhWao44zY5T1Bh7a4DQ9NQz8jxBoV: {
+  poolFees: {
+    baseFee: {
+      cliffFeeNumerator: <BN: 1dcd6500>,
+      feeSchedulerMode: 0,
+      padding0: [Array],
+      numberOfPeriod: 144,
+      periodFrequency: <BN: 258>,
+      reductionFactor: <BN: 2e9fc4>,
+      padding1: <BN: 0>
+    },
+    protocolFeePercent: 20,
+    partnerFeePercent: 0,
+    referralFeePercent: 20,
+    padding0: [ 0, 0, 0, 0, 0 ],
+    dynamicFee: {
+      initialized: 1,
+      padding: [Array],
+      maxVolatilityAccumulator: 14460000,
+      variableFeeControl: 5739,
+      binStep: 1,
+      filterPeriod: 10,
+      decayPeriod: 120,
+      reductionFactor: 5000,
+      lastUpdateTimestamp: <BN: 68a22df4>,
+      binStepU128: <BN: 68db8bac710cb>,
+      sqrtPriceReference: <BN: 3f3f6dc5bcf9e0b>,
+      volatilityAccumulator: <BN: dca460>,
+      volatilityReference: <BN: b98c0>
+    },
+    padding1: [ <BN: 0>, <BN: 0> ]
+  },
+  tokenAMint: PublicKey [PublicKey(6JetoLbk33uJSCNy4Mz7WTXgEHeLxU8M8iphG4fppump)] {
+    _bn: <BN: 4ed0277bde54f2f558832a2dfbef071c394d3cfd5fcb3dec99f79032b3bb98bf>
+  },
+  tokenBMint: PublicKey [PublicKey(So11111111111111111111111111111111111111112)] {
+    _bn: <BN: 69b8857feab8184fb687f634618c035dac439dc1aeb3b5598a0f00000000001>
+  },
+  tokenAVault: PublicKey [PublicKey(uNyNdw9M9XNotgLVVSynwB3F2w3YepXAfAaixmv5WwB)] {
+    _bn: <BN: d6b0bbbc631c5c976ce736b822309e0443e95df3b02e6f2cd00e6077f84cf0a>
+  },
+  tokenBVault: PublicKey [PublicKey(CnszmN4LmSG5YmJqEro8LziU4YvRaAvxoRrUa5ZVdRyr)] {
+    _bn: <BN: af315a9916f7fc5e4658a5caaed10c27ca2eb37b70c2cfb8c04446b0b506e021>
+  },
+  whitelistedVault: PublicKey [PublicKey(11111111111111111111111111111111)] {
+    _bn: <BN: 0>
+  },
+  partner: PublicKey [PublicKey(11111111111111111111111111111111)] {
+    _bn: <BN: 0>
+  },
+  liquidity: <BN: 6f11e340c47e1e697ad8c8547>,
+  padding: <BN: 0>,
+  protocolAFee: <BN: 0>,
+  protocolBFee: <BN: 36fad10c>,
+  partnerAFee: <BN: 0>,
+  partnerBFee: <BN: 0>,
+  sqrtMinPrice: <BN: 100013b50>,
+  sqrtMaxPrice: <BN: fffec4b1845c1aa94e69579b>,
+  sqrtPrice: <BN: 3a95588a27725b1>,
+  activationPoint: <BN: 68a21ce7>,
+  activationType: 1,
+  poolStatus: 0,
+  tokenAFlag: 0,
+  tokenBFlag: 0,
+  collectFeeMode: 1,
+  poolType: 0,
+  padding0: [ 0, 0 ],
+  feeAPerLiquidity: [
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0
+  ],
+  feeBPerLiquidity: [
+    21, 44, 59, 90, 29, 101, 187, 27, 0,
+     0,  0,  0,  0,  0,   0,   0,  0, 0,
+     0,  0,  0,  0,  0,   0,   0,  0, 0,
+     0,  0,  0,  0,  0
+  ],
+  permanentLockLiquidity: <BN: 0>,
+  metrics: {
+    totalLpAFee: <BN: 0>,
+    totalLpBFee: <BN: dfa921ea>,
+    totalProtocolAFee: <BN: 0>,
+    totalProtocolBFee: <BN: 36fad10c>,
+    totalPartnerAFee: <BN: 0>,
+    totalPartnerBFee: <BN: 0>,
+    totalPosition: <BN: a>,
+    padding: <BN: 0>
+  },
+  creator: PublicKey [PublicKey(AgxvtDc9N83VzYaP38wUg8Fsj8qWCknATWFdzVVasGzd)] {
+    _bn: <BN: 8ff612b254ecc62ed7b306d15192eedb0ba153c55a6f9132437e4b4ce50ae40a>
+  },
+  padding1: [ <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0> ],
+  rewardInfos: [
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    },
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    }
+  ]
+}
+  Información de la pool obtenida: Token A: 6JetoLbk33uJSCNy4Mz7WTXgEHeLxU8M8iphG4fppump, Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 46.64%
+  Verificando si el token 6JetoLbk33uJSCNy4Mz7WTXgEHeLxU8M8iphG4fppump es swappable en Jupiter.
+    Token 6JetoLbk33uJSCNy4Mz7WTXgEHeLxU8M8iphG4fppump no encontrado en la lista de tokens de Jupiter.
+    No se pudieron obtener los decimales para el token 6JetoLbk33uJSCNy4Mz7WTXgEHeLxU8M8iphG4fppump.
+  Token A (6JetoLbk33uJSCNy4Mz7WTXgEHeLxU8M8iphG4fppump) swappable en Jupiter: false
+  Token So11111111111111111111111111111111111111112 es SOL/WSOL o USDC, no se considera swappable para arbitraje.
+  Token B (So11111111111111111111111111111111111111112) swappable en Jupiter: false
+  Pool 9DcF1EySJ3NYLHFNZkYCm8edeCWGmDsJhV48VC3ihaJn descartada por baja liquidez en Meteora ($0.00 USD).
+Analizando pool de Meteora: 7w7rQTLektsXcN7RaVtsJBpVX6mSnuALKmaVuFRQKLrW (createdAt: 2025-08-17T18:16:10.000Z, Liquidez: $10512.19 USD)
+Intentando obtener pool info para: 7w7rQTLektsXcN7RaVtsJBpVX6mSnuALKmaVuFRQKLrW
+  PoolState encontrado para 7w7rQTLektsXcN7RaVtsJBpVX6mSnuALKmaVuFRQKLrW: {
+  poolFees: {
+    baseFee: {
+      cliffFeeNumerator: <BN: 989680>,
+      feeSchedulerMode: 0,
+      padding0: [Array],
+      numberOfPeriod: 0,
+      periodFrequency: <BN: 0>,
+      reductionFactor: <BN: 0>,
+      padding1: <BN: 0>
+    },
+    protocolFeePercent: 20,
+    partnerFeePercent: 0,
+    referralFeePercent: 20,
+    padding0: [ 0, 0, 0, 0, 0 ],
+    dynamicFee: {
+      initialized: 1,
+      padding: [Array],
+      maxVolatilityAccumulator: 14460000,
+      variableFeeControl: 956,
+      binStep: 1,
+      filterPeriod: 10,
+      decayPeriod: 120,
+      reductionFactor: 5000,
+      lastUpdateTimestamp: <BN: 68a236c8>,
+      binStepU128: <BN: 68db8bac710cb>,
+      sqrtPriceReference: <BN: 20261c457ed2b6a>,
+      volatilityAccumulator: <BN: 9ca22b>,
+      volatilityReference: <BN: 160d0b>
+    },
+    padding1: [ <BN: 0>, <BN: 0> ]
+  },
+  tokenAMint: PublicKey [PublicKey(3VPuXKHXdw9ibvYhANP6UsuAUVvZjpLzBjc9xv9esend)] {
+    _bn: <BN: 24fd89316438df4dfdc280828ff29a82e81178541e9e0cce5f950be00448676a>
+  },
+  tokenBMint: PublicKey [PublicKey(So11111111111111111111111111111111111111112)] {
+    _bn: <BN: 69b8857feab8184fb687f634618c035dac439dc1aeb3b5598a0f00000000001>
+  },
+  tokenAVault: PublicKey [PublicKey(8dHorTw4EHnDQa1bMxNjwoorfu9PGs3zMph3kBPm1R87)] {
+    _bn: <BN: 714db8e602732952da359d3679854f179938714dd00c819325f1e5f65cc8177c>
+  },
+  tokenBVault: PublicKey [PublicKey(CzGHzB2mKHBkrTg4Do7w1FXocLojnsAhAsUK1rtq3etr)] {
+    _bn: <BN: b21bf4391afae5e84ba6552477a9fe39f9632f1279c5c6df38172b94552c1a63>
+  },
+  whitelistedVault: PublicKey [PublicKey(11111111111111111111111111111111)] {
+    _bn: <BN: 0>
+  },
+  partner: PublicKey [PublicKey(FhVo3mqL8PW5pH5U2CN4XE33DokiyZnUwuGpH2hmHLuM)] {
+    _bn: <BN: da63681f7286bcc806719e2c2b50a20157243bfc9668b11520bc53843edcdb08>
+  },
+  liquidity: <BN: 2f4fb636ebd28c20b513c4f582f>,
+  padding: <BN: 0>,
+  protocolAFee: <BN: 0>,
+  protocolBFee: <BN: 14170f53c>,
+  partnerAFee: <BN: 0>,
+  partnerBFee: <BN: 0>,
+  sqrtMinPrice: <BN: 100013b50>,
+  sqrtMaxPrice: <BN: fffec4b1845c1aa94e69579b>,
+  sqrtPrice: <BN: 21916f5289a2b2e>,
+  activationPoint: <BN: 68a21c6a>,
+  activationType: 1,
+  poolStatus: 0,
+  tokenAFlag: 0,
+  tokenBFlag: 0,
+  collectFeeMode: 1,
+  poolType: 0,
+  padding0: [ 0, 0 ],
+  feeAPerLiquidity: [
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0
+  ],
+  feeBPerLiquidity: [
+    66, 219, 129, 230, 7, 18, 9, 2, 0,
+     0,   0,   0,   0, 0,  0, 0, 0, 0,
+     0,   0,   0,   0, 0,  0, 0, 0, 0,
+     0,   0,   0,   0, 0
+  ],
+  permanentLockLiquidity: <BN: 2c02152a902ed242d92a12adc32>,
+  metrics: {
+    totalLpAFee: <BN: 0>,
+    totalLpBFee: <BN: 5d3d6eae5>,
+    totalProtocolAFee: <BN: 0>,
+    totalProtocolBFee: <BN: 14170f53c>,
+    totalPartnerAFee: <BN: 0>,
+    totalPartnerBFee: <BN: 0>,
+    totalPosition: <BN: 3>,
+    padding: <BN: 0>
+  },
+  creator: PublicKey [PublicKey(FhVo3mqL8PW5pH5U2CN4XE33DokiyZnUwuGpH2hmHLuM)] {
+    _bn: <BN: da63681f7286bcc806719e2c2b50a20157243bfc9668b11520bc53843edcdb08>
+  },
+  padding1: [ <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0> ],
+  rewardInfos: [
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    },
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    }
+  ]
+}
+  Información de la pool obtenida: Token A: 3VPuXKHXdw9ibvYhANP6UsuAUVvZjpLzBjc9xv9esend, Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 1.00%
+  Verificando si el token 3VPuXKHXdw9ibvYhANP6UsuAUVvZjpLzBjc9xv9esend es swappable en Jupiter.
+    Token 3VPuXKHXdw9ibvYhANP6UsuAUVvZjpLzBjc9xv9esend no encontrado en la lista de tokens de Jupiter.
+    No se pudieron obtener los decimales para el token 3VPuXKHXdw9ibvYhANP6UsuAUVvZjpLzBjc9xv9esend.
+  Token A (3VPuXKHXdw9ibvYhANP6UsuAUVvZjpLzBjc9xv9esend) swappable en Jupiter: false
+  Token So11111111111111111111111111111111111111112 es SOL/WSOL o USDC, no se considera swappable para arbitraje.
+  Token B (So11111111111111111111111111111111111111112) swappable en Jupiter: false
+  Pool DsYkvTq6JJVGDBaVP6taPMXZyY98MPj57VxZMwSVgjVS descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool 27szDWNYyJUyT9qib4iYTv6uzLkbRBnNigiU9riR3t76 descartada por baja liquidez en Meteora ($5.16 USD).
+  Pool GzdEV7jtKUGe3A8tZ3sNai22z2ozsXLJJHev9VDcZeEq descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool 2dxEPaihPbUzYfAerhBmNPGnWy4VDFLYysSyniZAezxV descartada por baja liquidez en Meteora ($42.81 USD).
+  Pool 4JPqTGavcCvgfWZyrY3J39zpNurRtKdu4XeAfbS6KsYV descartada por baja liquidez en Meteora ($0.00 USD).
+Analizando pool de Meteora: 2VaakxZuVhEyKau4L6ycey7movuX7JEE9fJcsfCDFhJ2 (createdAt: 2025-08-17T18:04:14.000Z, Liquidez: $371.11 USD)
+Intentando obtener pool info para: 2VaakxZuVhEyKau4L6ycey7movuX7JEE9fJcsfCDFhJ2
+  PoolState encontrado para 2VaakxZuVhEyKau4L6ycey7movuX7JEE9fJcsfCDFhJ2: {
+  poolFees: {
+    baseFee: {
+      cliffFeeNumerator: <BN: 989680>,
+      feeSchedulerMode: 0,
+      padding0: [Array],
+      numberOfPeriod: 0,
+      periodFrequency: <BN: 0>,
+      reductionFactor: <BN: 0>,
+      padding1: <BN: 0>
+    },
+    protocolFeePercent: 20,
+    partnerFeePercent: 0,
+    referralFeePercent: 20,
+    padding0: [ 0, 0, 0, 0, 0 ],
+    dynamicFee: {
+      initialized: 1,
+      padding: [Array],
+      maxVolatilityAccumulator: 14460000,
+      variableFeeControl: 956,
+      binStep: 1,
+      filterPeriod: 10,
+      decayPeriod: 120,
+      reductionFactor: 5000,
+      lastUpdateTimestamp: <BN: 68a22270>,
+      binStepU128: <BN: 68db8bac710cb>,
+      sqrtPriceReference: <BN: 5a86745014a453>,
+      volatilityAccumulator: <BN: 2fe9a0>,
+      volatilityReference: <BN: 186a0>
+    },
+    padding1: [ <BN: 0>, <BN: 0> ]
+  },
+  tokenAMint: PublicKey [PublicKey(GFkWHo7TrXA16QARNCpodekQXEF7JAT7qCpiCdbtpqhV)] {
+    _bn: <BN: e2a6a0609e13917a8ffbb9ccb72ea77289b5ee80599f33260e5a3e7d2245d634>
+  },
+  tokenBMint: PublicKey [PublicKey(So11111111111111111111111111111111111111112)] {
+    _bn: <BN: 69b8857feab8184fb687f634618c035dac439dc1aeb3b5598a0f00000000001>
+  },
+  tokenAVault: PublicKey [PublicKey(6aLvMCfCi26439zr3UZzsWZ9LH7cyNAiYCQbCPcFtbNh)] {
+    _bn: <BN: 52d51fed92a57e8fa19cf91767352ac3e1ecb43a48ef714768ebcf57ff3eae6a>
+  },
+  tokenBVault: PublicKey [PublicKey(HyhAt2QRPxXThu7abRZXJDLxNTiGUtijqsVBVvjq4Tos)] {
+    _bn: <BN: fc40efd74072e597c4aa8fe97de3fdde9ac71cc247d35aaffaebc9d0d9c9c93e>
+  },
+  whitelistedVault: PublicKey [PublicKey(11111111111111111111111111111111)] {
+    _bn: <BN: 0>
+  },
+  partner: PublicKey [PublicKey(FhVo3mqL8PW5pH5U2CN4XE33DokiyZnUwuGpH2hmHLuM)] {
+    _bn: <BN: da63681f7286bcc806719e2c2b50a20157243bfc9668b11520bc53843edcdb08>
+  },
+  liquidity: <BN: a5a8423441161fe0fe777e4cc2>,
+  padding: <BN: 0>,
+  protocolAFee: <BN: 0>,
+  protocolBFee: <BN: a91df68>,
+  partnerAFee: <BN: 0>,
+  partnerBFee: <BN: 0>,
+  sqrtMinPrice: <BN: 100013b50>,
+  sqrtMaxPrice: <BN: fffec4b1845c1aa94e69579b>,
+  sqrtPrice: <BN: 5929da72d64837>,
+  activationPoint: <BN: 68a2199e>,
+  activationType: 1,
+  poolStatus: 0,
+  tokenAFlag: 1,
+  tokenBFlag: 0,
+  collectFeeMode: 1,
+  poolType: 0,
+  padding0: [ 0, 0 ],
+  feeAPerLiquidity: [
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0
+  ],
+  feeBPerLiquidity: [
+    246, 63, 200, 69, 1, 131, 75, 0, 0,
+      0,  0,   0,  0, 0,   0,  0, 0, 0,
+      0,  0,   0,  0, 0,   0,  0, 0, 0,
+      0,  0,   0,  0, 0
+  ],
+  permanentLockLiquidity: <BN: 0>,
+  metrics: {
+    totalLpAFee: <BN: 0>,
+    totalLpBFee: <BN: 30dd1152>,
+    totalProtocolAFee: <BN: 0>,
+    totalProtocolBFee: <BN: a91df68>,
+    totalPartnerAFee: <BN: 0>,
+    totalPartnerBFee: <BN: 0>,
+    totalPosition: <BN: 2>,
+    padding: <BN: 0>
+  },
+  creator: PublicKey [PublicKey(FhVo3mqL8PW5pH5U2CN4XE33DokiyZnUwuGpH2hmHLuM)] {
+    _bn: <BN: da63681f7286bcc806719e2c2b50a20157243bfc9668b11520bc53843edcdb08>
+  },
+  padding1: [ <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0>, <BN: 0> ],
+  rewardInfos: [
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    },
+    {
+      initialized: 0,
+      rewardTokenFlag: 0,
+      padding0: [Array],
+      padding1: [Array],
+      mint: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      vault: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      funder: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      rewardDuration: <BN: 0>,
+      rewardDurationEnd: <BN: 0>,
+      rewardRate: <BN: 0>,
+      rewardPerTokenStored: [Array],
+      lastUpdateTime: <BN: 0>,
+      cumulativeSecondsWithEmptyLiquidityReward: <BN: 0>
+    }
+  ]
+}
+  Información de la pool obtenida: Token A: GFkWHo7TrXA16QARNCpodekQXEF7JAT7qCpiCdbtpqhV, Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 1.00%
+  Verificando si el token GFkWHo7TrXA16QARNCpodekQXEF7JAT7qCpiCdbtpqhV es swappable en Jupiter.
+    Token GFkWHo7TrXA16QARNCpodekQXEF7JAT7qCpiCdbtpqhV no encontrado en la lista de tokens de Jupiter.
+    No se pudieron obtener los decimales para el token GFkWHo7TrXA16QARNCpodekQXEF7JAT7qCpiCdbtpqhV.
+  Token A (GFkWHo7TrXA16QARNCpodekQXEF7JAT7qCpiCdbtpqhV) swappable en Jupiter: false
+  Token So11111111111111111111111111111111111111112 es SOL/WSOL o USDC, no se considera swappable para arbitraje.
+  Token B (So11111111111111111111111111111111111111112) swappable en Jupiter: false
+  Pool 484rbFBUba44sejJgWMiK5gEftoHuYwioXG66T3uzEuN descartada por baja liquidez en Meteora ($10.39 USD).
+  Pool Fmf87t5x8RpsV6rbd3zbbTt2yMCdEXazGuKUUXiB8WMG descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool 3vSErFTFyPtavcaJkgFmL8F8RWyXTNqEpCjcjEXbaZaK descartada por baja liquidez en Meteora ($46.20 USD).
+  Pool EVggprLzEMnziW3A76FwA2FPKzrXNWmZWp3Z87CJ3Guv descartada por baja liquidez en Meteora ($35.72 USD).
+  Pool 6oRf9LCVugAvpSkSPLVm2LzXhQuSwzwVVsKa2xXfDzt5 descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool 61ca3JGKuhtgfuywFXmst1w78kXpf5Gmsdsms4MHEy3y descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool GgQrMEs1enbzAkLErpEnKLC7L8XPavF4mEuG7RiAis8f descartada por baja liquidez en Meteora ($37.14 USD).
+  Pool 3HVSqxCutkEqBruVbGw4tRMrNWUNWpNzBScVKDyAfBAS descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool GyTuZ72mNHnNUg5X3Zd1hNdmrSUy8kZTheB8dFVncTbL descartada por baja liquidez en Meteora ($42.02 USD).
+  Pool EK4kZz2b7dmyfSfkJ2Hvci3M1SzsVGL9emgSAfVZA1ZS descartada por baja liquidez en Meteora ($42.44 USD).
+  Pool DhqUCsLY9ibUr6Hj73YW22Grk5qVXqnV9HGj7cPkwMQB descartada por baja liquidez en Meteora ($31.05 USD).
+  Pool 5upmLtuTNPwPYNgeegujiWZddoQre1VpavSdswjbVzFv descartada por baja liquidez en Meteora ($6.07 USD).
+  Pool GDSjhtLN5m3gnzL8193eev7KNQGZcEEeWdPHW3KoxuAp descartada por baja liquidez en Meteora ($17.32 USD).
+  Pool GBPopbJhxK7CD1dz2SKG1kFrDBwjko4aD5mj4tYpdL4x descartada por baja liquidez en Meteora ($55.47 USD).
+  Pool B7fzQPWeEADe2oeWHMjx4RizvoCAH4ykRiYA2G74uwHc descartada por baja liquidez en Meteora ($0.00 USD).
+  Pool CjnzB9Nyh1tdkxv8x8fTD7jAGTocAewbYjMfBAtxmk1A descartada por baja liquidez en Meteora ($97.25 USD).
+  Pool mkFDtky33Gf87tyxuSc1iP3PuVfDLR3RK8dU6G89V4x descartada por baja liquidez en Meteora ($28.76 USD).
+  Pool AqursdvikPtxEvAgz8fyjHtj1VSzcwTjHatMe2YmM7up descartada por baja liquidez en Meteora ($2.53 USD).
+  Pool AabRwZjLnVX8S5MyYUCSU4kaYvFDrTJchAWPZDW58PUr descartada por baja liquidez en Meteora ($32.91 USD).
+  Pool HCrCiRksC9kdPXNLGuCCamMzgKgZCCFoyS6PZsLpPBJq descartada por baja liquidez en Meteora ($42.87 USD).
+  Pool AWJZoHHb8WxusGq6MesVBXUGcT68kVcMJkb5LHSEfo5r descartada por baja liquidez en Meteora ($0.57 USD).
+
+--- Pools DAMM v2 encontradas ---
+Pool: 9ztowBmMe1asHwF1AFZ1g8uMA4CMDKTAyD74hUKRwEU5
+  Token A: F8FN5FdjjrNYkbejV58bKKAUwao8hDLAwmGj8yHFpump
+  Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 49.69%
+  Jupiter Swap Posible: No
+----------------------------------
+Pool: HJxsAwiMago7aHTEwurgTu5WnZVZLfvXj4qakU5J3zPo
+  Token A: 7CNtoYE5zxNhfFxzz11H8aJ9wDXfU9WS3pKAWifVpump
+  Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 49.39%
+  Jupiter Swap Posible: No
+----------------------------------
+Pool: BVeMQKuSSYBzxCGNSrS5LZy57CAH3axN1o9aQwuNQ7ie
+  Token A: 7CWjhAhjwo2zssDYhf9egJwibCeUBALCrNaDzhMXM777
+  Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 4.00%
+  Jupiter Swap Posible: No
+----------------------------------
+Pool: 3ru2koJBhHZFTz3gZLDA3mPVpRQN27ALiS8nqvmBPRP5
+  Token A: 3EiG7s5dzNLY5U3v6LemtE31amfyTMPdYM3giZe7c777
+  Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 48.17%
+  Jupiter Swap Posible: No
+----------------------------------
+Pool: FxBhPfJakg69tMi9RqJmFurfjrx7PUtdD54dUbUUNTef
+  Token A: GLgLivx3B761MTCFyTTvmjp7EyiH9qG6erenAAyapump
+  Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 47.56%
+  Jupiter Swap Posible: No
+----------------------------------
+Pool: FbVaWoLfKGFYPUY6tmbvnaVaCQJM71obuUAJh389i2KW
+  Token A: HskhujcVzfYmLnU9EX7bcnSbgAiiVFVSsBNdMnQ3ZV46
+  Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 47.56%
+  Jupiter Swap Posible: No
+----------------------------------
+Pool: 6mRxoNaQxsRMTRgt99mG371LFi1qduf1muonzYQUoesx
+  Token A: A7CBQGYvZ3JhBCrHEhVkSBpyyooCygw91tZbcV2gpump
+  Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 6.00%
+  Jupiter Swap Posible: No
+----------------------------------
+Pool: HFnbFfc6n4TGRChq3Gb3Fu6bXMKFGgeKDwZQCo3PS77q
+  Token A: 7CWjhAhjwo2zssDYhf9egJwibCeUBALCrNaDzhMXM777
+  Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 47.25%
+  Jupiter Swap Posible: No
+----------------------------------
+Pool: AZ7wHTpcv1yV96zLmrihQ5RRf18f7LV2gXGYFtVqcUC4
+  Token A: BmtsKCLR1HbyXqHWFhKhN86XFFCdiSym5suEKPHjE777
+  Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 46.94%
+  Jupiter Swap Posible: No
+----------------------------------
+Pool: 7gYHYtYbPMctSTcwhWao44zY5T1Bh7a4DQ9NQz8jxBoV
+  Token A: 6JetoLbk33uJSCNy4Mz7WTXgEHeLxU8M8iphG4fppump
+  Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 46.64%
+  Jupiter Swap Posible: No
+----------------------------------
+Pool: 7w7rQTLektsXcN7RaVtsJBpVX6mSnuALKmaVuFRQKLrW
+  Token A: 3VPuXKHXdw9ibvYhANP6UsuAUVvZjpLzBjc9xv9esend
+  Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 1.00%
+  Jupiter Swap Posible: No
+----------------------------------
+Pool: 2VaakxZuVhEyKau4L6ycey7movuX7JEE9fJcsfCDFhJ2
+  Token A: GFkWHo7TrXA16QARNCpodekQXEF7JAT7qCpiCdbtpqhV
+  Token B: So11111111111111111111111111111111111111112
+  Fee Rate: 1.00%
+  Jupiter Swap Posible: No
+----------------------------------
